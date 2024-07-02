@@ -1,5 +1,6 @@
+import { useState } from "react";
+import { authenticateUser } from "./session";
 import axios from "axios";
-import React, { useState } from "react";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -21,12 +22,44 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form data submitted: ", formData);
-    const response = await fetch("http://localhost:5000/auth/register", {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: { "Content-type": "application/json" },
-    });
-    console.log(response);
+    try {
+      const response = await fetch("http://localhost:5000/auth/register", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/json" },
+      });
+      const { access_token, error, message } = await response.json();
+
+      if (error) {
+        console.error("Registration Error: ", message);
+        return { error, message };
+      }
+
+      if (access_token) {
+        // Utiliser le token d'accès pour authentifier l'utilisateur
+        await authenticateUser({ userToken: access_token });
+
+        // Configurer axios pour utiliser le token d'accès
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${access_token}`;
+
+        console.log("User registered successfully!");
+        // Redirection ou autres actions après enregistrement réussi
+      } else {
+        console.error("Unexpected error: No access token received.");
+        return {
+          error: true,
+          message: "Une erreur inattendue est survenue !",
+        };
+      }
+    } catch (error) {
+      console.error("Fetch Error: ", error);
+      return {
+        error: true,
+        message: "Une erreur inattendue est survenue !",
+      };
+    }
   };
 
   return (
@@ -54,7 +87,7 @@ const Register = () => {
           value={formData.firstname}
           onChange={handleChange}
           required
-          placeholder="votre prenom"
+          placeholder="Votre prénom"
         />
         <input
           type="text"
@@ -62,7 +95,7 @@ const Register = () => {
           value={formData.lastname}
           onChange={handleChange}
           required
-          placeholder="votre nom"
+          placeholder="Votre nom"
         />
         <input
           type="text"
@@ -70,9 +103,9 @@ const Register = () => {
           value={formData.address}
           onChange={handleChange}
           required
-          placeholder="addresse"
+          placeholder="Adresse"
         />
-        <button type="submit">Crée un compte</button>
+        <button type="submit">Créer un compte</button>
       </form>
     </div>
   );
