@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500&display=swap");
+
+$font1: "Saira Condensed", sans-serif;
+$font2: "Baloo Bhaina 2", cursive;
+$color1: #1a1414;
+$blue1: #03496f;
+$green1: rgb(2, 172, 81);
+$text1: #e0d1ad;
+$red2: rgb(251, 69, 63);
+$white1: rgb(219, 217, 217);
+$white2: rgb(172, 172, 172);
+$black1: rgb(31, 31, 31);
+$black2: rgb(10, 10, 10);
+$shadow: 0 5px 15px rgba(0, 0, 0, 0.322);
+
+:export {
+  color1: $color1;
+  blue12: $blue1;
+  green1: $green1;
+  text1: $text1;
+  red2: $red2;
+  black1: $black1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  font-family: $font1;
+  color: $white1;
+}
+li {
+  list-style: none;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+label {
+  user-select: none;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
