@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { authenticateUser } from "./session";
+import { authenticateUser } from "../services/session.service";
 import axios from "axios";
 
 const Register = () => {
