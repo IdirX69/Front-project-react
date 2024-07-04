@@ -31,7 +31,7 @@ export const authenticateUser = async ({
   userToken: string;
 }) => {
   const createdSession = await commitUserToken({ userToken });
-  window.location.href = "/";
+  // window.location.href = "/";
   return {
     headers: {
       "Set-Cookie": createdSession,

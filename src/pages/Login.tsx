@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { authenticateUser } from "../services/session.service";
+import { UserProvider } from "../contexte/UserContext";
 
 const Login = () => {
   const [formData, setFormData] = useState({
