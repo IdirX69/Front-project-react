@@ -3,11 +3,13 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import { UserProvider } from "./contexte/UserContext";
+import Navigation from "./components/Navigation";
 
 function App() {
   return (
     <UserProvider>
       <Router>
+        <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
 

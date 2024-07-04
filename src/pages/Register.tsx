@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { authenticateUser } from "../services/session.service";
 
-import axios from "axios";
 import { useUser } from "../contexte/UserContext";
 
 const Register: React.FC = () => {

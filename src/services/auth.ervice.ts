@@ -1,4 +1,3 @@
-import { useUser } from "../contexte/UserContext";
 import { getUserToken, logout } from "./session.service";
 
 export const getAuthenticatedUser = async () => {

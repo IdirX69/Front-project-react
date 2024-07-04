@@ -34,7 +34,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
       setUser(authenticatedUser);
     };
 
-    fetchUser();
+    if (user === null) fetchUser();
   }, []);
 
   const logoutUser = async () => {
