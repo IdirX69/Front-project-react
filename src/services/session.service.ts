@@ -1,4 +1,5 @@
 import Cookies from "js-cookie";
+import { getAuthenticatedUser } from "./auth.ervice";
 
 // Fonctions pour gérer les cookies
 const getSession = async (sessionName: string) => {
@@ -30,11 +31,7 @@ export const authenticateUser = async ({
 }: {
   userToken: string;
 }) => {
-  const createdSession = await commitUserToken({ userToken });
-  // window.location.href = "/";
-  return {
-    headers: {
-      "Set-Cookie": createdSession,
-    },
-  };
+  await commitUserToken({ userToken });
+  const authenticatedUser = await getAuthenticatedUser();
+  return authenticatedUser;
 };

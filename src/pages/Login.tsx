@@ -1,8 +1,11 @@
 import React, { useContext, useState } from "react";
 import { authenticateUser } from "../services/session.service";
-import { UserProvider } from "../contexte/UserContext";
+import { UserProvider, useUser } from "../contexte/UserContext";
 
 const Login = () => {
+  const { setUser, user, logoutUser } = useUser();
+  console.log(user);
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -18,7 +21,11 @@ const Login = () => {
 
     const { access_token } = await response.json();
 
-    return authenticateUser({ userToken: access_token });
+    const authenticatedUser = await authenticateUser({
+      userToken: access_token,
+    });
+    setUser(authenticatedUser);
+    return authenticatedUser;
   };
 
   const handleChange = (e) => {
@@ -49,6 +56,9 @@ const Login = () => {
       />
 
       <button type="submit">Se Connecter</button>
+      <button type="button" onClick={() => logoutUser()}>
+        Se deconnecter
+      </button>
     </form>
   );
 };

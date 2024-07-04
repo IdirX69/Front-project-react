@@ -1,8 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { authenticateUser } from "../services/session.service";
-import axios from "axios";
 
-const Register = () => {
+import axios from "axios";
+import { useUser } from "../contexte/UserContext";
+
+const Register: React.FC = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -11,7 +13,9 @@ const Register = () => {
     address: "",
   });
 
-  const handleChange = (e) => {
+  const { setUser } = useUser();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -19,7 +23,7 @@ const Register = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Form data submitted: ", formData);
     try {
@@ -37,15 +41,17 @@ const Register = () => {
 
       if (access_token) {
         // Utiliser le token d'accès pour authentifier l'utilisateur
-        await authenticateUser({ userToken: access_token });
-
-        // Configurer axios pour utiliser le token d'accès
-        axios.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${access_token}`;
+        const authenticatedUser = await authenticateUser({
+          userToken: access_token,
+        });
 
         console.log("User registered successfully!");
-        // Redirection ou autres actions après enregistrement réussi
+        console.log(authenticatedUser);
+
+        if (authenticatedUser) {
+          setUser(authenticatedUser);
+          // Redirection ou autres actions après enregistrement réussi
+        }
       } else {
         console.error("Unexpected error: No access token received.");
         return {
