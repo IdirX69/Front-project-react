@@ -1,9 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { authenticateUser } from "../services/session.service";
-import { UserProvider, useUser } from "../contexte/UserContext";
+import { useUser } from "../contexte/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { setUser, user, logoutUser } = useUser();
+  const navigation = useNavigate();
+
   console.log(user);
 
   const [formData, setFormData] = useState({

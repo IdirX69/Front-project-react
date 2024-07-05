@@ -43,4 +43,10 @@ label {
 
 .no-scroll {
   overflow: hidden;
+}
+
+.navigation ul {
+  display: flex;
+  background-color: red;
+  justify-content: space-around;
 }/*# sourceMappingURL=index.css.map */
