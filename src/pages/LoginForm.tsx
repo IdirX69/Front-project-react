@@ -3,11 +3,9 @@ import { authenticateUser } from "../services/session.service";
 import { useUser } from "../contexte/UserContext";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const LoginForm = () => {
   const { setUser, user, logoutUser } = useUser();
   const navigation = useNavigate();
-
-  console.log(user);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -66,4 +64,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginForm;

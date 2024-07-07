@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
-import Login from "./pages/Login";
+import Login from "./pages/LoginForm";
 import { UserProvider, useUser } from "./contexte/UserContext";
 import Navigation from "./components/Navigation";
-import AddArticle from "./pages/AddArticle";
+import AddArticle from "./components/AddArticle";
+import LoginForm from "./pages/LoginForm";
 
 function App() {
   const { user } = useUser();
@@ -16,7 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/add-article" element={<AddArticle />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<LoginForm />} />
         </Routes>
       </Router>
     </UserProvider>

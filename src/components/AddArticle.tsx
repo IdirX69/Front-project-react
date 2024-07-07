@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 
 const AddArticle = () => {
+  const BACKEND_URL = process.env.BACKEND_URL;
+
   const [formData, setFormData] = useState({
     name: "",
     description: "",
     price: "",
-    image: null,
+    image: "",
   });
 
   const handleChange = (e) => {
@@ -24,13 +26,10 @@ const AddArticle = () => {
       const imageData = new FormData();
       imageData.append("image", formData.image);
 
-      const imageResponse = await fetch(
-        "http://localhost:5000/articles/upload",
-        {
-          method: "POST",
-          body: imageData,
-        }
-      );
+      const imageResponse = await fetch(`${BACKEND_URL}/articles/upload`, {
+        method: "POST",
+        body: imageData,
+      });
 
       if (!imageResponse.ok) {
         throw new Error("Image upload failed");
@@ -46,7 +45,7 @@ const AddArticle = () => {
         image: imageResult.filename,
       };
 
-      const articleResponse = await fetch("http://localhost:5000/articles", {
+      const articleResponse = await fetch(`${BACKEND_URL}/articles`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

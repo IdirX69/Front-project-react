@@ -26,7 +26,7 @@ const Register: React.FC = () => {
     e.preventDefault();
     console.log("Form data submitted: ", formData);
     try {
-      const response = await fetch("http://localhost:5000/auth/register", {
+      const response = await fetch("${BACKEND_URL}/auth/register", {
         method: "POST",
         body: JSON.stringify(formData),
         headers: { "Content-Type": "application/json" },
