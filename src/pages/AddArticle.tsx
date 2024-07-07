@@ -5,7 +5,7 @@ const AddArticle = () => {
     name: "",
     description: "",
     price: "",
-    image: "",
+    image: null,
   });
 
   const handleChange = (e) => {
@@ -19,22 +19,55 @@ const AddArticle = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = new FormData();
+    try {
+      // Step 1: Upload the image file
+      const imageData = new FormData();
+      imageData.append("image", formData.image);
 
-    data.append("image", formData.image);
-    console.log(data.values);
+      const imageResponse = await fetch(
+        "http://localhost:5000/articles/upload",
+        {
+          method: "POST",
+          body: imageData,
+        }
+      );
 
-    const response = await fetch("http://localhost:5000/articles/upload", {
-      method: "POST",
-      body: data,
-    });
+      if (!imageResponse.ok) {
+        throw new Error("Image upload failed");
+      }
 
-    const result = await response.json();
-    if (!result.error) {
-      alert("Article ajouté avec succès !");
-      console.log(`Erreur : ${JSON.stringify(result)}`);
-    } else {
-      alert(`Erreur : ${result.message}`);
+      const imageResult = await imageResponse.json();
+
+      // Step 2: Create the article with the uploaded image filename
+      const articleData = {
+        name: formData.name,
+        description: formData.description,
+        price: formData.price,
+        image: imageResult.filename,
+      };
+
+      const articleResponse = await fetch("http://localhost:5000/articles", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(articleData),
+      });
+
+      if (!articleResponse.ok) {
+        throw new Error("Article creation failed");
+      }
+
+      const result = await articleResponse.json();
+
+      if (!result.error) {
+        console.log(`Article ajouté: ${JSON.stringify(result)}`);
+      } else {
+        throw new Error(result.message);
+      }
+    } catch (error) {
+      console.error(`Erreur : ${error.message}`);
+      alert(`Erreur : ${error.message}`);
     }
   };
 
