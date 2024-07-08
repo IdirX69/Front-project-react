@@ -3,7 +3,7 @@
 
 $font1: "Saira Condensed", sans-serif;
 $font2: "Baloo Bhaina 2", cursive;
-$color1: #1a1414;
+$color1: #c5a2a2;
 $blue1: #03496f;
 $green1: rgb(2, 172, 81);
 $text1: #e0d1ad;
@@ -53,4 +53,12 @@ label {
 
 .no-scroll {
   overflow: hidden;
+}
+
+.btn-1 {
+  border: none;
+  color: white;
+  background-color: $color1;
+  padding: 8px;
+  border-radius: 6px;
 }

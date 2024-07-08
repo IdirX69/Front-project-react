@@ -1,0 +1,31 @@
+.admin-navigation {
+  background-color: $color1;
+  width: 40%;
+  height: 100vh;
+  padding-top: 10px;
+  padding-left: 10px;
+
+  a {
+    color: rgb(255, 255, 255);
+  }
+  .active {
+    color: $color1;
+    background-color: white;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+
+  .link-admin {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+
+    padding: 6px;
+    gap: 10px;
+    margin-top: 6px;
+
+    svg {
+      height: 20px;
+    }
+  }
+}

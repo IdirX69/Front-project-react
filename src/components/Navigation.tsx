@@ -1,5 +1,6 @@
 import React from "react";
 import { useUser } from "../contexte/UserContext";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
   const { user } = useUser();
@@ -9,8 +10,10 @@ const Navigation = () => {
         <li>Accueil</li>
         <li>Produit</li>
         <li>Site Name</li>
-        <li>Profile</li>
-        {user && <li>{user?.firstname + " " + user.lastname}</li>}
+
+        <Link to={user?.firstname ? "admin-dashboard" : "/profile"}>
+          {user && <li>{user?.firstname + " " + user.lastname}</li>}
+        </Link>
       </ul>
     </nav>
   );

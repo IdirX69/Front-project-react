@@ -1,8 +1,7 @@
 import React, { useState } from "react";
+import AdminNavigation from "../../components/AdminNavigation";
 
 const AddArticle = () => {
-  const BACKEND_URL = process.env.BACKEND_URL;
-
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -26,10 +25,13 @@ const AddArticle = () => {
       const imageData = new FormData();
       imageData.append("image", formData.image);
 
-      const imageResponse = await fetch(`${BACKEND_URL}/articles/upload`, {
-        method: "POST",
-        body: imageData,
-      });
+      const imageResponse = await fetch(
+        `http://localhost:5000/articles/upload`,
+        {
+          method: "POST",
+          body: imageData,
+        }
+      );
 
       if (!imageResponse.ok) {
         throw new Error("Image upload failed");
@@ -71,40 +73,43 @@ const AddArticle = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} encType="multipart/form-data">
-      <input
-        type="text"
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
-        required
-        placeholder="Nom de l'article"
-      />
-      <input
-        type="text"
-        name="description"
-        value={formData.description}
-        onChange={handleChange}
-        required
-        placeholder="Description de l'article"
-      />
-      <input
-        type="number"
-        name="price"
-        value={formData.price}
-        onChange={handleChange}
-        required
-        placeholder="Prix de l'article"
-      />
-      <input
-        type="file"
-        name="image"
-        onChange={handleChange}
-        required
-        placeholder="Image de l'article"
-      />
-      <button type="submit">Ajouter</button>
-    </form>
+    <div className="admin-dashboard-container">
+      <AdminNavigation />
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+          placeholder="Nom de l'article"
+        />
+        <input
+          type="text"
+          name="description"
+          value={formData.description}
+          onChange={handleChange}
+          required
+          placeholder="Description de l'article"
+        />
+        <input
+          type="number"
+          name="price"
+          value={formData.price}
+          onChange={handleChange}
+          required
+          placeholder="Prix de l'article"
+        />
+        <input
+          type="file"
+          name="image"
+          onChange={handleChange}
+          required
+          placeholder="Image de l'article"
+        />
+        <button type="submit">Ajouter</button>
+      </form>
+    </div>
   );
 };
 

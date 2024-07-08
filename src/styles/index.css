@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500&display=swap");
 :export {
-  color1: #1a1414;
+  color1: #c5a2a2;
   blue12: #03496f;
   green1: rgb(2, 172, 81);
   text1: #e0d1ad;
@@ -45,8 +45,52 @@ label {
   overflow: hidden;
 }
 
+.btn-1 {
+  border: none;
+  color: white;
+  background-color: #c5a2a2;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.admin-dashboard-container {
+  display: flex;
+}
+.admin-dashboard-container .dashboard {
+  color: black;
+  padding: 10px;
+}
+
 .navigation ul {
   display: flex;
   background-color: red;
   justify-content: space-around;
+}
+
+.admin-navigation {
+  background-color: #c5a2a2;
+  width: 40%;
+  height: 100vh;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+.admin-navigation a {
+  color: rgb(255, 255, 255);
+}
+.admin-navigation .active {
+  color: #c5a2a2;
+  background-color: white;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+.admin-navigation .link-admin {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  padding: 6px;
+  gap: 10px;
+  margin-top: 6px;
+}
+.admin-navigation .link-admin svg {
+  height: 20px;
 }/*# sourceMappingURL=index.css.map */
