@@ -47,7 +47,7 @@ const AddArticle = () => {
         image: imageResult.filename,
       };
 
-      const articleResponse = await fetch(`${BACKEND_URL}/articles`, {
+      const articleResponse = await fetch(`http://localhost:5000/articles`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -73,9 +73,11 @@ const AddArticle = () => {
   };
 
   return (
-    <div className="admin-dashboard-container">
+    <div className="admin-container">
       <AdminNavigation />
       <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <h2>Add new product</h2>
+        <label>Product name</label>
         <input
           type="text"
           name="name"
@@ -84,14 +86,15 @@ const AddArticle = () => {
           required
           placeholder="Nom de l'article"
         />
-        <input
-          type="text"
+        <label>Description</label>
+        <textarea
           name="description"
           value={formData.description}
           onChange={handleChange}
           required
           placeholder="Description de l'article"
         />
+        <label>Price</label>
         <input
           type="number"
           name="price"
@@ -100,14 +103,19 @@ const AddArticle = () => {
           required
           placeholder="Prix de l'article"
         />
-        <input
-          type="file"
-          name="image"
-          onChange={handleChange}
-          required
-          placeholder="Image de l'article"
-        />
-        <button type="submit">Ajouter</button>
+        <label className="btn-1 label-file">
+          Add image
+          <input
+            type="file"
+            name="image"
+            onChange={handleChange}
+            required
+            placeholder="Image de l'article"
+          />
+        </label>
+        <button className="btn-1" type="submit">
+          Ajouter
+        </button>
       </form>
     </div>
   );

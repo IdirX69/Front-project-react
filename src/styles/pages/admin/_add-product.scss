@@ -1,0 +1,28 @@
+.admin-container {
+  form {
+    color: gray;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    padding: 8px;
+    input textarea {
+      max-width: 90%;
+      height: 30px;
+      margin-top: 8px;
+      padding: 4px;
+      border: 2px solid rgba(128, 128, 128, 0.479);
+    }
+    input[type="file"] {
+      display: none;
+    }
+    .label-file {
+      width: 50%;
+      margin-top: 10px;
+    }
+    button {
+      align-self: center;
+      margin-top: 10px;
+      width: 50%;
+    }
+  }
+}

@@ -5,7 +5,7 @@ import AdminNavigation from "../../components/AdminNavigation";
 const AdminDashboard = () => {
   const { user } = useUser();
   return (
-    <div className="admin-dashboard-container">
+    <div className="admin-container">
       <AdminNavigation />
       <div className="dashboard">hello {user?.firstname}</div>
     </div>

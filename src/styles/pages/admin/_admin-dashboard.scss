@@ -1,7 +1,9 @@
-.admin-dashboard-container {
+.admin-container {
   display: flex;
+
   .dashboard {
     color: black;
     padding: 10px;
+    width: 65%;
   }
 }

@@ -1,0 +1,15 @@
+.product-card-container {
+  margin-top: 15px;
+  border: 1px solid $color1;
+  border-radius: 6px;
+  display: flex;
+
+  h3 {
+    text-align: center;
+  }
+  img {
+    max-width: 30%;
+  }
+  span {
+  }
+}

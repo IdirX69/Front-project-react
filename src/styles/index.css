@@ -53,12 +53,40 @@ label {
   border-radius: 6px;
 }
 
-.admin-dashboard-container {
+.admin-container {
   display: flex;
 }
-.admin-dashboard-container .dashboard {
+.admin-container .dashboard {
   color: black;
   padding: 10px;
+  width: 65%;
+}
+
+.admin-container form {
+  color: gray;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  padding: 8px;
+}
+.admin-container form input textarea {
+  max-width: 90%;
+  height: 30px;
+  margin-top: 8px;
+  padding: 4px;
+  border: 2px solid rgba(128, 128, 128, 0.479);
+}
+.admin-container form input[type=file] {
+  display: none;
+}
+.admin-container form .label-file {
+  width: 50%;
+  margin-top: 10px;
+}
+.admin-container form button {
+  align-self: center;
+  margin-top: 10px;
+  width: 50%;
 }
 
 .navigation ul {
@@ -69,7 +97,7 @@ label {
 
 .admin-navigation {
   background-color: #c5a2a2;
-  width: 40%;
+  width: 35%;
   height: 100vh;
   padding-top: 10px;
   padding-left: 10px;
@@ -93,4 +121,17 @@ label {
 }
 .admin-navigation .link-admin svg {
   height: 20px;
+}
+
+.product-card-container {
+  margin-top: 15px;
+  border: 1px solid #c5a2a2;
+  border-radius: 6px;
+  display: flex;
+}
+.product-card-container h3 {
+  text-align: center;
+}
+.product-card-container img {
+  max-width: 30%;
 }/*# sourceMappingURL=index.css.map */
