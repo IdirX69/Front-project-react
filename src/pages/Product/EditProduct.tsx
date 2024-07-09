@@ -4,6 +4,7 @@ import AdminNavigation from "../../components/AdminNavigation";
 
 const EditProduct = () => {
   const { id } = useParams();
+  const [upload, setUpload] = useState("");
   const [product, setProduct] = useState({
     name: "",
     description: "",
@@ -43,6 +44,24 @@ const EditProduct = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Step 1: Upload the image file
+
+    const imageData = new FormData();
+    imageData.append("image", upload);
+
+    console.log(upload);
+    const imageResponse = await fetch(`http://localhost:5000/articles/upload`, {
+      method: "POST",
+      body: imageData,
+    });
+
+    if (!imageResponse.ok) {
+      throw new Error("Image upload failed");
+    }
+
+    const { filename } = await imageResponse.json();
+    console.log(filename);
+
     try {
       const response = await fetch(`http://localhost:5000/articles/${id}`, {
         method: "PATCH",
@@ -52,6 +71,7 @@ const EditProduct = () => {
         body: JSON.stringify({
           ...product,
           price: String(product.price),
+          image: filename ? filename : product.image,
         }),
       });
       if (!response.ok) {
@@ -102,6 +122,7 @@ const EditProduct = () => {
           alt={product.name}
         />
         <input
+          style={{ display: "none" }}
           type="text"
           name="image"
           id="image"
@@ -125,7 +146,12 @@ const EditProduct = () => {
             />
           </svg>
           New image
-          <input type="file" id="file" name="file" />
+          <input
+            type="file"
+            id="image"
+            name="image"
+            onChange={(e) => setUpload(e.target.files[0])}
+          />
         </label>
 
         <button className="btn-1">Update</button>
