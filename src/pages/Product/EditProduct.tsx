@@ -21,7 +21,7 @@ const EditProduct = () => {
       setProduct({
         name: data.name,
         description: data.description,
-        price: data.price,
+        price: String(data.price),
         image: data.image,
       });
     } catch (error) {
@@ -49,10 +49,13 @@ const EditProduct = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(product),
+        body: JSON.stringify({
+          ...product,
+          price: String(product.price),
+        }),
       });
       if (!response.ok) {
-        throw new Error("Failed to update product");
+        console.log(response);
       }
       const data = await response.json();
       console.log("Product updated successfully: ", data);
@@ -94,6 +97,17 @@ const EditProduct = () => {
           onChange={handleChange}
           required
         />
+        <img
+          src={"http://localhost:5000/uploads/" + product.image}
+          alt={product.name}
+        />
+        <input
+          type="text"
+          name="image"
+          id="image"
+          value={product.image}
+          onChange={handleChange}
+        />
 
         <label className="btn-1 label-file">
           <svg
@@ -110,14 +124,8 @@ const EditProduct = () => {
               d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"
             />
           </svg>
-          Image
-          <input
-            type="file"
-            id="image"
-            name="image"
-            onChange={handleChange}
-            required
-          />
+          New image
+          <input type="file" id="file" name="file" />
         </label>
 
         <button className="btn-1">Update</button>

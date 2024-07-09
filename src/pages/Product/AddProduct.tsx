@@ -5,7 +5,7 @@ const AddArticle = () => {
   const [formData, setFormData] = useState({
     name: "",
     description: "",
-    price: "",
+    price: 0,
     image: "",
   });
 
