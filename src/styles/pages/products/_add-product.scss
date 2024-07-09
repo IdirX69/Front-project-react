@@ -3,21 +3,36 @@
     color: gray;
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 65%;
     padding: 8px;
-    input textarea {
+    input,
+    textarea {
       max-width: 90%;
       height: 30px;
-      margin-top: 8px;
+
       padding: 4px;
       border: 2px solid rgba(128, 128, 128, 0.479);
+    }
+    textarea {
+      height: 100px;
+    }
+    label {
+      margin-top: 10px;
     }
     input[type="file"] {
       display: none;
     }
     .label-file {
-      width: 50%;
       margin-top: 10px;
+      text-align: center;
+      width: 80px;
+      align-self: center;
+      font-size: small;
+      display: flex;
+      flex-direction: column;
+      svg {
+        height: 30px;
+      }
     }
     button {
       align-self: center;

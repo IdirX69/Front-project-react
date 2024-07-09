@@ -97,22 +97,36 @@ label {
   color: gray;
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 65%;
   padding: 8px;
 }
-.admin-container form input textarea {
+.admin-container form input,
+.admin-container form textarea {
   max-width: 90%;
   height: 30px;
-  margin-top: 8px;
   padding: 4px;
   border: 2px solid rgba(128, 128, 128, 0.479);
+}
+.admin-container form textarea {
+  height: 100px;
+}
+.admin-container form label {
+  margin-top: 10px;
 }
 .admin-container form input[type=file] {
   display: none;
 }
 .admin-container form .label-file {
-  width: 50%;
   margin-top: 10px;
+  text-align: center;
+  width: 80px;
+  align-self: center;
+  font-size: small;
+  display: flex;
+  flex-direction: column;
+}
+.admin-container form .label-file svg {
+  height: 30px;
 }
 .admin-container form button {
   align-self: center;

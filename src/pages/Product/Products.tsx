@@ -33,7 +33,7 @@ const Products = () => {
           </thead>
           <tbody>
             {products.map((product) => (
-              <tr>
+              <tr key={product.id}>
                 <td>{product.name}</td>
                 <td className="td-link">
                   <Link to={"/products/edit/" + product.id}>
