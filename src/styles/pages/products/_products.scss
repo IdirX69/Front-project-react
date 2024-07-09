@@ -1,0 +1,28 @@
+.products-table {
+  width: 100%;
+  border-spacing: 0;
+  td {
+    height: 35px;
+    border: 1px solid rgba(250, 128, 114, 0.171);
+  }
+  .td-link {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    a {
+      color: white;
+      background-color: salmon;
+      padding: 2px 7px;
+      font-size: small;
+      border-radius: 6px;
+      display: inline-flex;
+      gap: 6px;
+      svg {
+        height: 18px;
+      }
+    }
+  }
+  thead {
+    background-color: rgba(250, 128, 114, 0.404);
+  }
+}

@@ -3,13 +3,19 @@
   border: 1px solid $color1;
   border-radius: 6px;
   display: flex;
-
+  div {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 6px;
+  }
   h3 {
-    text-align: center;
   }
   img {
-    max-width: 30%;
+    height: 120px;
+    max-width: 120px;
   }
   span {
+    font-size: 20px;
   }
 }

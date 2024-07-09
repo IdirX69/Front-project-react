@@ -7,7 +7,7 @@ const AdminNavigation = () => {
   return (
     <aside className="admin-navigation">
       <h3>Admin Dashboard</h3>
-      <NavLink to={"/admin/dashboard"} className="link-admin">
+      <NavLink to={"/dashboard"} className="link-admin">
         <span>Dashboard</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,7 @@ const AdminNavigation = () => {
           />
         </svg>
       </NavLink>
-      <NavLink to="/admin/products" className="link-admin">
+      <NavLink to="/products" className="link-admin">
         <span>Products</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"

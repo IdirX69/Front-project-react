@@ -3,7 +3,7 @@ import ProductCard from "./ProductCard";
 
 const ProductList = ({ products }) => {
   return (
-    <div>
+    <div className="product-list-container">
       {products.map((product) => (
         <ProductCard product={product} />
       ))}

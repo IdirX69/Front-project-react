@@ -1,7 +1,8 @@
 @import "settings";
 @import "./pages/home";
-@import "./pages/admin/admin-dashboard";
-@import "./pages/admin/add-product";
+@import "./pages/products/admin-dashboard";
+@import "./pages/products/products";
+@import "./pages/products/add-product";
 @import "./components/navigation";
 @import "./components/admin-navigation";
 @import "./components/product-card";

@@ -4,9 +4,10 @@ import Register from "./pages/Register";
 import { UserProvider, useUser } from "./contexte/UserContext";
 import LoginForm from "./pages/LoginForm";
 import Profile from "./pages/Profile";
-import AdminDashboard from "./pages/Admin/AdminDashboard";
-import Products from "./pages/Admin/Products";
-import AddProduct from "./pages/Admin/AddProduct";
+import AdminDashboard from "./pages/Product/AdminDashboard";
+import Products from "./pages/Product/Products";
+import AddProduct from "./pages/Product/AddProduct";
+import EditProduct from "./pages/Product/EditProduct";
 
 function App() {
   const { user } = useUser();
@@ -18,9 +19,11 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          <Route path="/admin/products" element={<Products />} />
-          <Route path="/admin/products/new" element={<AddProduct />} />
+          <Route path="/dashboard" element={<AdminDashboard />} />
+          //products routes
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/new" element={<AddProduct />} />
+          <Route path="/products/edit/:id" element={<EditProduct />} />
         </Routes>
       </Router>
     </UserProvider>

@@ -55,11 +55,42 @@ label {
 
 .admin-container {
   display: flex;
+  min-height: 100%;
 }
 .admin-container .dashboard {
+  min-height: 100%;
   color: black;
   padding: 10px;
   width: 65%;
+}
+
+.products-table {
+  width: 100%;
+  border-spacing: 0;
+}
+.products-table td {
+  height: 35px;
+  border: 1px solid rgba(250, 128, 114, 0.171);
+}
+.products-table .td-link {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.products-table .td-link a {
+  color: white;
+  background-color: salmon;
+  padding: 2px 7px;
+  font-size: small;
+  border-radius: 6px;
+  display: inline-flex;
+  gap: 6px;
+}
+.products-table .td-link a svg {
+  height: 18px;
+}
+.products-table thead {
+  background-color: rgba(250, 128, 114, 0.404);
 }
 
 .admin-container form {
@@ -98,7 +129,7 @@ label {
 .admin-navigation {
   background-color: #c5a2a2;
   width: 35%;
-  height: 100vh;
+  min-height: 100vh;
   padding-top: 10px;
   padding-left: 10px;
 }
@@ -129,9 +160,16 @@ label {
   border-radius: 6px;
   display: flex;
 }
-.product-card-container h3 {
-  text-align: center;
+.product-card-container div {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 6px;
 }
 .product-card-container img {
-  max-width: 30%;
+  height: 120px;
+  max-width: 120px;
+}
+.product-card-container span {
+  font-size: 20px;
 }/*# sourceMappingURL=index.css.map */
