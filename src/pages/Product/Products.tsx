@@ -14,6 +14,14 @@ const Products = () => {
     fetchProducts();
   }, []);
 
+  const handleDelete = async (id) => {
+    const response = await fetch("http://localhost:5000/articles/" + id, {
+      method: "DELETE",
+    });
+    fetchProducts();
+    console.log(response);
+  };
+
   console.log(products);
   return (
     <div className="admin-container">
@@ -53,7 +61,7 @@ const Products = () => {
                     </svg>
                     Edit
                   </Link>
-                  <Link to={"/products/delete/" + product.id}>
+                  <Link onClick={() => handleDelete(product.id)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
