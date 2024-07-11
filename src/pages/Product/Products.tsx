@@ -61,7 +61,7 @@ const Products = () => {
                     </svg>
                     Edit
                   </Link>
-                  <Link onClick={() => handleDelete(product.id)}>
+                  <button onClick={() => handleDelete(product.id)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -77,7 +77,7 @@ const Products = () => {
                       />
                     </svg>
                     Delete
-                  </Link>
+                  </button>
                 </td>
               </tr>
             ))}

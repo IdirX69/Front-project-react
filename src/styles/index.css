@@ -77,7 +77,9 @@ label {
   justify-content: space-around;
   align-items: center;
 }
-.products-table .td-link a {
+.products-table .td-link a,
+.products-table .td-link button {
+  border: none;
   color: white;
   background-color: salmon;
   padding: 2px 7px;
@@ -86,7 +88,8 @@ label {
   display: inline-flex;
   gap: 6px;
 }
-.products-table .td-link a svg {
+.products-table .td-link a svg,
+.products-table .td-link button svg {
   height: 18px;
 }
 .products-table thead {
