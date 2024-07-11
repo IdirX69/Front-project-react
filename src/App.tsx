@@ -8,6 +8,8 @@ import AdminDashboard from "./pages/Product/AdminDashboard";
 import Products from "./pages/Product/Products";
 import AddProduct from "./pages/Product/AddProduct";
 import EditProduct from "./pages/Product/EditProduct";
+import Categories from "./pages/categories/Categories";
+import AddCategories from "./pages/categories/AddCategories";
 
 function App() {
   const { user } = useUser();
@@ -24,6 +26,9 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/products/new" element={<AddProduct />} />
           <Route path="/products/edit/:id" element={<EditProduct />} />
+          //
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/categories/new" element={<AddCategories />} />
         </Routes>
       </Router>
     </UserProvider>
