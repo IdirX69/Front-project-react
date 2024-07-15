@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AdminNavigation from "../../components/AdminNavigation";
 
-const AddCategories = () => {
+const AddCategories = ({ fetchCategories }) => {
   const [formData, setFormData] = useState({
     name: "",
   });
@@ -32,11 +32,11 @@ const AddCategories = () => {
 
       if (!categoryResponse.ok) {
         console.log(categoryResponse);
-
         throw new Error("category creation failed");
       }
 
       const result = await categoryResponse.json();
+      fetchCategories();
 
       if (!result.error) {
         console.log(`category ajouté: ${JSON.stringify(result)}`);
@@ -50,11 +50,10 @@ const AddCategories = () => {
   };
 
   return (
-    <div className="admin-container">
-      <AdminNavigation />
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <h2>Add new Category</h2>
-        <label>Category name</label>
+    <form onSubmit={handleSubmit} encType="multipart/form-data">
+      <h2>Add new Category</h2>
+      <label>
+        Category name
         <input
           type="text"
           name="name"
@@ -63,12 +62,11 @@ const AddCategories = () => {
           required
           placeholder="Nom de l'category"
         />
-
         <button className="btn-1" type="submit">
           Ajouter
         </button>
-      </form>
-    </div>
+      </label>
+    </form>
   );
 };
 

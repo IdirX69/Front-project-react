@@ -1,13 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AdminNavigation from "../../components/AdminNavigation";
 
 const AddArticle = () => {
+  const [categories, setCategories] = useState();
   const [formData, setFormData] = useState({
     name: "",
     description: "",
     price: 0,
     image: "",
   });
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  const fetchCategories = async () => {
+    const response = await fetch("http://localhost:5000/categories");
+    const data = await response.json();
+
+    setCategories(data);
+  };
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -94,6 +106,18 @@ const AddArticle = () => {
           required
           placeholder="Description de l'article"
         />
+
+        <label>Category</label>
+        <select>
+          Category
+          <option value="">Select a category</option>
+          {categories?.length > 0 &&
+            categories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
+        </select>
         <label>Price</label>
         <input
           type="number"

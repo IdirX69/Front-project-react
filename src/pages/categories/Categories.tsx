@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import AdminNavigation from "../../components/AdminNavigation";
 import { Link } from "react-router-dom";
+import AddCategories from "./AddCategories";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
   const fetchCategories = async () => {
     const response = await fetch("http://localhost:5000/categories");
     const data = await response.json();
-    console.log(data);
 
     setCategories(data);
   };
@@ -21,7 +21,6 @@ const Categories = () => {
       method: "DELETE",
     });
     fetchCategories();
-    console.log(response);
   };
 
   console.log(categories);
@@ -30,9 +29,7 @@ const Categories = () => {
       <AdminNavigation />
       <div className="dashboard">
         <h2>categories</h2>
-        <Link to={"new"}>
-          <button className="btn-1">Add new category</button>
-        </Link>
+        <AddCategories fetchCategories={fetchCategories} />
 
         <table className="products-table">
           <thead>
