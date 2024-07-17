@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
-import { UserProvider, useUser } from "./contexte/UserContext";
+import { UserProvider } from "./contexte/UserContext";
 import LoginForm from "./pages/LoginForm";
 import Profile from "./pages/Profile";
 import AdminDashboard from "./pages/Product/AdminDashboard";
@@ -12,7 +12,6 @@ import Categories from "./pages/categories/Categories";
 import AddCategories from "./pages/categories/AddCategories";
 
 function App() {
-  const { user } = useUser();
   return (
     <UserProvider>
       <Router>

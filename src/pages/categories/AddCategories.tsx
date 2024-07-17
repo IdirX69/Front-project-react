@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import AdminNavigation from "../../components/AdminNavigation";
 
-const AddCategories = ({ fetchCategories }) => {
+interface AddCategoriesProps {
+  fetchCategories?: () => void;
+}
+
+const AddCategories: React.FC<AddCategoriesProps> = ({ fetchCategories }) => {
   const [formData, setFormData] = useState({
     name: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, files } = e.target;
     setFormData({
       ...formData,
@@ -14,7 +17,7 @@ const AddCategories = ({ fetchCategories }) => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
@@ -36,7 +39,9 @@ const AddCategories = ({ fetchCategories }) => {
       }
 
       const result = await categoryResponse.json();
-      fetchCategories();
+      if (fetchCategories) {
+        fetchCategories();
+      }
 
       if (!result.error) {
         console.log(`category ajouté: ${JSON.stringify(result)}`);
@@ -44,8 +49,11 @@ const AddCategories = ({ fetchCategories }) => {
         throw new Error(result.message);
       }
     } catch (error) {
-      console.error(`Erreur : ${error.message}`);
-      alert(`Erreur : ${error.message}`);
+      if (error instanceof Error) {
+        console.error(`Erreur : ${error.message}`);
+      } else {
+        console.error("Unknown error", error);
+      }
     }
   };
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import AdminNavigation from "../../components/AdminNavigation";
 import { Link } from "react-router-dom";
 import AddCategories from "./AddCategories";
+import { CategoryType } from "../../types/types";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
@@ -16,8 +17,8 @@ const Categories = () => {
     fetchCategories();
   }, []);
 
-  const handleDelete = async (id) => {
-    const response = await fetch("http://localhost:5000/categories/" + id, {
+  const handleDelete = async (id: number) => {
+    await fetch("http://localhost:5000/categories/" + id, {
       method: "DELETE",
     });
     fetchCategories();
@@ -39,7 +40,7 @@ const Categories = () => {
             </tr>
           </thead>
           <tbody>
-            {categories.map((category) => (
+            {categories.map((category: CategoryType) => (
               <tr key={category.id}>
                 <td>{category.name}</td>
                 <td className="td-link">

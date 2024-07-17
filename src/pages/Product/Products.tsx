@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AdminNavigation from "../../components/AdminNavigation";
 import { Link } from "react-router-dom";
+import { ProductType } from "../../types/types";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -14,7 +15,7 @@ const Products = () => {
     fetchProducts();
   }, []);
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id: number) => {
     const response = await fetch("http://localhost:5000/articles/" + id, {
       method: "DELETE",
     });
@@ -40,7 +41,7 @@ const Products = () => {
             </tr>
           </thead>
           <tbody>
-            {products.map((product) => (
+            {products.map((product: ProductType) => (
               <tr key={product.id}>
                 <td>{product.name}</td>
                 <td className="td-link">

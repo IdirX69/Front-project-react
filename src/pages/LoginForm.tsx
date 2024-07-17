@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import { authenticateUser } from "../services/session.service";
 import { useUser } from "../contexte/UserContext";
-import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-  const { setUser, user, logoutUser } = useUser();
-  const navigation = useNavigate();
+  const { setUser, logoutUser } = useUser();
 
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const response = await fetch("http://localhost:5000/auth/login", {
       method: "POST",
@@ -29,7 +27,7 @@ const LoginForm = () => {
     return authenticatedUser;
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,

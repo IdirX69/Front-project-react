@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import AdminNavigation from "../../components/AdminNavigation";
+import { CategoryType } from "../../types/types";
 
 const AddArticle = () => {
-  const [categories, setCategories] = useState();
+  const [categories, setCategories] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
     description: "",
     price: 0,
+    categories: "",
     image: "",
   });
 
@@ -17,19 +19,24 @@ const AddArticle = () => {
   const fetchCategories = async () => {
     const response = await fetch("http://localhost:5000/categories");
     const data = await response.json();
-
     setCategories(data);
   };
 
-  const handleChange = (e) => {
-    const { name, value, files } = e.target;
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value, files } = e.target as HTMLInputElement &
+      HTMLTextAreaElement &
+      HTMLSelectElement & { files: FileList | null };
     setFormData({
       ...formData,
       [name]: files ? files[0] : value,
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
@@ -56,6 +63,7 @@ const AddArticle = () => {
         name: formData.name,
         description: formData.description,
         price: formData.price,
+        categories: [formData.categories],
         image: imageResult.filename,
       };
 
@@ -68,7 +76,9 @@ const AddArticle = () => {
       });
 
       if (!articleResponse.ok) {
-        throw new Error("Article creation failed");
+        const errorData = await articleResponse.json();
+        console.log("Server response:", errorData);
+        throw new Error(errorData.message || "Article creation failed");
       }
 
       const result = await articleResponse.json();
@@ -79,8 +89,11 @@ const AddArticle = () => {
         throw new Error(result.message);
       }
     } catch (error) {
-      console.error(`Erreur : ${error.message}`);
-      alert(`Erreur : ${error.message}`);
+      if (error instanceof Error) {
+        console.error(`Erreur : ${error.message}`);
+      } else {
+        console.error("Unknown error", error);
+      }
     }
   };
 
@@ -108,11 +121,15 @@ const AddArticle = () => {
         />
 
         <label>Category</label>
-        <select>
-          Category
-          <option value="">Select a category</option>
+        <select
+          name="categories"
+          value={formData.categories}
+          onChange={handleChange}
+          multiple
+        >
+          <option value="">Select categories</option>
           {categories?.length > 0 &&
-            categories.map((category) => (
+            categories.map((category: CategoryType) => (
               <option key={category.id} value={category.id}>
                 {category.name}
               </option>

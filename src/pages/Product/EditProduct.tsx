@@ -1,40 +1,50 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AdminNavigation from "../../components/AdminNavigation";
+import { CategoryType } from "../../types/types";
 
 const EditProduct = () => {
-  const { id } = useParams();
-  const [upload, setUpload] = useState(null);
+  const { id } = useParams<{ id: string }>();
+  const [categories, setCategories] = useState<CategoryType[]>([]);
+  const [upload, setUpload] = useState<File | null>(null);
   const [product, setProduct] = useState({
     name: "",
     description: "",
     price: "",
+    categories: "",
     image: "",
   });
 
-  const fetchOneProduct = async () => {
-    try {
+  const fetchCategories = useCallback(async () => {
+    const response = await fetch("http://localhost:5000/categories");
+    const data = await response.json();
+    setCategories(data);
+  }, []);
+
+  const fetchOneProduct = useCallback(async () => {
+    if (id) {
       const response = await fetch(`http://localhost:5000/articles/${id}`);
-      if (!response.ok) {
-        throw new Error("Failed to fetch product");
-      }
       const data = await response.json();
       setProduct({
         name: data.name,
         description: data.description,
-        price: String(data.price),
+        price: data.price,
+        categories: data.categories.join(","),
         image: data.image,
       });
-    } catch (error) {
-      console.error("Error fetching product: ", error);
     }
-  };
-
-  useEffect(() => {
-    fetchOneProduct();
   }, [id]);
 
-  const handleChange = (e) => {
+  useEffect(() => {
+    fetchCategories();
+    fetchOneProduct();
+  }, [fetchCategories, fetchOneProduct]);
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const { name, value } = e.target;
     setProduct((prevProduct) => ({
       ...prevProduct,
@@ -67,7 +77,7 @@ const EditProduct = () => {
     return product.image;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const imageFilename = await handleImageUpload();
     try {
@@ -106,6 +116,22 @@ const EditProduct = () => {
           onChange={handleChange}
           required
         />
+
+        <label>Category</label>
+        <select
+          name="categories"
+          value={product.categories}
+          onChange={handleChange}
+          multiple
+        >
+          <option value="">Select categories</option>
+          {categories?.length > 0 &&
+            categories?.map((category: CategoryType) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
+        </select>
 
         <label>Description:</label>
         <textarea
@@ -151,7 +177,11 @@ const EditProduct = () => {
             type="file"
             id="image"
             name="image"
-            onChange={(e) => setUpload(e.target.files[0])}
+            onChange={(e) => {
+              if (e.target.files) {
+                setUpload(e.target.files[0]);
+              }
+            }}
           />
         </label>
 

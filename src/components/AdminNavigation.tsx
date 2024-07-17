@@ -1,9 +1,7 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import { useUser } from "../contexte/UserContext";
+import { NavLink } from "react-router-dom";
 
 const AdminNavigation = () => {
-  const { user } = useUser();
   return (
     <aside className="admin-navigation">
       <h3>Admin Dashboard</h3>
