@@ -4,6 +4,9 @@ import AdminNavigation from "../../components/AdminNavigation";
 import { CategoryType } from "../../types/types";
 
 const EditProduct = () => {
+  const apiKey = import.meta.env.VITE_API_KEY;
+  console.log("API Key:", apiKey);
+
   const { id } = useParams<{ id: string }>();
   const [categories, setCategories] = useState<CategoryType[]>([]);
   const [upload, setUpload] = useState<File | null>(null);
@@ -23,7 +26,7 @@ const EditProduct = () => {
 
   const fetchOneProduct = useCallback(async () => {
     if (id) {
-      const response = await fetch(`http://localhost:5000/articles/${id}`);
+      const response = await fetch(`http://localhost:5000/products/${id}`);
       const data = await response.json();
       setProduct({
         name: data.name,
@@ -58,7 +61,7 @@ const EditProduct = () => {
       imageData.append("image", upload);
       try {
         const imageResponse = await fetch(
-          `http://localhost:5000/articles/upload`,
+          `http://localhost:5000/products/upload`,
           {
             method: "POST",
             body: imageData,
@@ -84,7 +87,7 @@ const EditProduct = () => {
 
     const imageFilename = await handleImageUpload();
     try {
-      const response = await fetch(`http://localhost:5000/articles/${id}`, {
+      const response = await fetch(`http://localhost:5000/products/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

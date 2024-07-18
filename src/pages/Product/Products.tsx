@@ -6,7 +6,7 @@ import { ProductType } from "../../types/types";
 const Products = () => {
   const [products, setProducts] = useState([]);
   const fetchProducts = async () => {
-    const response = await fetch("http://localhost:5000/articles");
+    const response = await fetch("http://localhost:5000/products");
     const data = await response.json();
     setProducts(data);
   };
@@ -16,7 +16,7 @@ const Products = () => {
   }, []);
 
   const handleDelete = async (id: number) => {
-    const response = await fetch("http://localhost:5000/articles/" + id, {
+    const response = await fetch("http://localhost:5000/products/" + id, {
       method: "DELETE",
     });
     fetchProducts();
