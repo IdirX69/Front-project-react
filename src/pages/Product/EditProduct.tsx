@@ -53,7 +53,7 @@ const EditProduct = () => {
   };
 
   const handleImageUpload = async () => {
-    if (upload) {
+    if (upload !== null) {
       const imageData = new FormData();
       imageData.append("image", upload);
       try {
@@ -79,6 +79,7 @@ const EditProduct = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log("upload" + upload);
     console.log(product);
 
     const imageFilename = await handleImageUpload();
@@ -123,7 +124,7 @@ const EditProduct = () => {
         <label>Category</label>
         <select
           name="categoryId"
-          value={product.categories}
+          value={product.categoryId}
           onChange={handleChange}
           multiple
         >
