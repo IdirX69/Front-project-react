@@ -11,7 +11,7 @@ const EditProduct = () => {
     name: "",
     description: "",
     price: "",
-    categories: "",
+    categoryId: "",
     image: "",
   });
 
@@ -29,7 +29,7 @@ const EditProduct = () => {
         name: data.name,
         description: data.description,
         price: data.price,
-        categories: data.categories.join(","),
+        categoryId: data.categoryId,
         image: data.image,
       });
     }
@@ -79,6 +79,8 @@ const EditProduct = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log(product);
+
     const imageFilename = await handleImageUpload();
     try {
       const response = await fetch(`http://localhost:5000/articles/${id}`, {
@@ -101,6 +103,7 @@ const EditProduct = () => {
       console.error("Error updating product: ", error);
     }
   };
+  console.log(categories);
 
   return (
     <div className="admin-container">
@@ -119,7 +122,7 @@ const EditProduct = () => {
 
         <label>Category</label>
         <select
-          name="categories"
+          name="categoryId"
           value={product.categories}
           onChange={handleChange}
           multiple

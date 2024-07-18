@@ -8,7 +8,7 @@ const AddArticle = () => {
     name: "",
     description: "",
     price: 0,
-    categories: "",
+    categoryId: 0,
     image: "",
   });
 
@@ -63,9 +63,10 @@ const AddArticle = () => {
         name: formData.name,
         description: formData.description,
         price: formData.price,
-        categories: [formData.categories],
+        categoryId: formData.categoryId,
         image: imageResult.filename,
       };
+      console.log(articleData);
 
       const articleResponse = await fetch(`http://localhost:5000/articles`, {
         method: "POST",
@@ -122,8 +123,8 @@ const AddArticle = () => {
 
         <label>Category</label>
         <select
-          name="categories"
-          value={formData.categories}
+          name="categoryId"
+          value={formData.categoryId}
           onChange={handleChange}
           multiple
         >

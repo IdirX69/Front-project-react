@@ -104,8 +104,7 @@ label {
   padding: 8px;
 }
 .admin-container form input,
-.admin-container form textarea,
-.admin-container form select {
+.admin-container form textarea {
   max-width: 90%;
   height: 30px;
   padding: 4px;
