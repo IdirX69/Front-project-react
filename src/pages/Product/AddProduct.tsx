@@ -3,6 +3,7 @@ import AdminNavigation from "../../components/AdminNavigation";
 import { CategoryType } from "../../types/types";
 
 const AddArticle = () => {
+  const apiKey = import.meta.env.VITE_API_KEY;
   const [categories, setCategories] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
@@ -17,7 +18,7 @@ const AddArticle = () => {
   }, []);
 
   const fetchCategories = async () => {
-    const response = await fetch("http://localhost:5000/categories");
+    const response = await fetch(`${apiKey}/categories`);
     const data = await response.json();
     setCategories(data);
   };
@@ -44,13 +45,10 @@ const AddArticle = () => {
       const imageData = new FormData();
       imageData.append("image", formData.image);
 
-      const imageResponse = await fetch(
-        `http://localhost:5000/articles/upload`,
-        {
-          method: "POST",
-          body: imageData,
-        }
-      );
+      const imageResponse = await fetch(`${apiKey}/articles/upload`, {
+        method: "POST",
+        body: imageData,
+      });
 
       if (!imageResponse.ok) {
         throw new Error("Image upload failed");
@@ -68,7 +66,7 @@ const AddArticle = () => {
       };
       console.log(articleData);
 
-      const articleResponse = await fetch(`http://localhost:5000/articles`, {
+      const articleResponse = await fetch(`${apiKey}/articles`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

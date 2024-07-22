@@ -5,6 +5,7 @@ interface AddCategoriesProps {
 }
 
 const AddCategories: React.FC<AddCategoriesProps> = ({ fetchCategories }) => {
+  const apiKey = import.meta.env.VITE_API_KEY;
   const [formData, setFormData] = useState({
     name: "",
   });
@@ -25,7 +26,7 @@ const AddCategories: React.FC<AddCategoriesProps> = ({ fetchCategories }) => {
         name: formData.name,
       };
 
-      const categoryResponse = await fetch(`http://localhost:5000/categories`, {
+      const categoryResponse = await fetch(`${apiKey}/categories`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

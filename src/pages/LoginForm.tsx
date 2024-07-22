@@ -3,6 +3,8 @@ import { authenticateUser } from "../services/session.service";
 import { useUser } from "../contexte/UserContext";
 
 const LoginForm = () => {
+  const apiKey = import.meta.env.VITE_API_KEY;
+
   const { setUser, logoutUser } = useUser();
 
   const [formData, setFormData] = useState({
@@ -12,7 +14,7 @@ const LoginForm = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/auth/login", {
+    const response = await fetch(`${apiKey}/auth/login`, {
       method: "POST",
       body: JSON.stringify(formData),
       headers: { "Content-type": "application/json" },

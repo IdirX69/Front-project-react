@@ -5,9 +5,10 @@ import AddCategories from "./AddCategories";
 import { CategoryType } from "../../types/types";
 
 const Categories = () => {
+  const apiKey = import.meta.env.VITE_API_KEY;
   const [categories, setCategories] = useState([]);
   const fetchCategories = async () => {
-    const response = await fetch("http://localhost:5000/categories");
+    const response = await fetch(`${apiKey}/categories`);
     const data = await response.json();
 
     setCategories(data);
@@ -18,7 +19,7 @@ const Categories = () => {
   }, []);
 
   const handleDelete = async (id: number) => {
-    await fetch("http://localhost:5000/categories/" + id, {
+    await fetch(`${apiKey}/categories/` + id, {
       method: "DELETE",
     });
     fetchCategories();

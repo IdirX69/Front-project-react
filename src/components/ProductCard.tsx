@@ -1,11 +1,13 @@
 import React from "react";
+import { ProductType } from "../types/types";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product }: { product: ProductType }) => {
+  const apiKey = import.meta.env.VITE_API_KEY;
   console.log(product);
 
   return (
     <div className="product-card-container">
-      <img src={`http://localhost:5000/uploads/${product.image}`} alt="" />
+      <img src={`${apiKey}/uploads/${product.image}`} alt="" />
       <div>
         <h3>{product.name}</h3>
         <span>{product.price + "€"}</span>

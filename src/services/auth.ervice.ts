@@ -2,13 +2,12 @@ import { getUserToken, logout } from "./session.service";
 
 export const getAuthenticatedUser = async () => {
   const userToken = await getUserToken();
-  console.log(userToken);
-
+  const apiKey = import.meta.env.VITE_API_KEY;
   if (userToken === undefined) {
     return null;
   }
   try {
-    const response = await fetch("http://localhost:5000/auth", {
+    const response = await fetch(`${apiKey}/auth`, {
       headers: {
         "Content-type": "application/json",
         Authorization: `Bearer ${userToken}`,

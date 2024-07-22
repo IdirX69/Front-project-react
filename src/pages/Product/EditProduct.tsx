@@ -5,7 +5,6 @@ import { CategoryType } from "../../types/types";
 
 const EditProduct = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
-  console.log("API Key:", apiKey);
 
   const { id } = useParams<{ id: string }>();
   const [categories, setCategories] = useState<CategoryType[]>([]);
@@ -19,14 +18,14 @@ const EditProduct = () => {
   });
 
   const fetchCategories = useCallback(async () => {
-    const response = await fetch("http://localhost:5000/categories");
+    const response = await fetch(`${apiKey}/categories`);
     const data = await response.json();
     setCategories(data);
   }, []);
 
   const fetchOneProduct = useCallback(async () => {
     if (id) {
-      const response = await fetch(`http://localhost:5000/products/${id}`);
+      const response = await fetch(`${apiKey}/products/${id}`);
       const data = await response.json();
       setProduct({
         name: data.name,
@@ -60,13 +59,10 @@ const EditProduct = () => {
       const imageData = new FormData();
       imageData.append("image", upload);
       try {
-        const imageResponse = await fetch(
-          `http://localhost:5000/products/upload`,
-          {
-            method: "POST",
-            body: imageData,
-          }
-        );
+        const imageResponse = await fetch(`${apiKey}/products/upload`, {
+          method: "POST",
+          body: imageData,
+        });
         if (!imageResponse.ok) {
           throw new Error("Image upload failed");
         }
@@ -82,12 +78,10 @@ const EditProduct = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("upload" + upload);
-    console.log(product);
 
     const imageFilename = await handleImageUpload();
     try {
-      const response = await fetch(`http://localhost:5000/products/${id}`, {
+      const response = await fetch(`${apiKey}/products/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -107,7 +101,6 @@ const EditProduct = () => {
       console.error("Error updating product: ", error);
     }
   };
-  console.log(categories);
 
   return (
     <div className="admin-container">
@@ -159,10 +152,7 @@ const EditProduct = () => {
           required
         />
 
-        <img
-          src={`http://localhost:5000/uploads/${product.image}`}
-          alt={product.name}
-        />
+        <img src={`${apiKey}/uploads/${product.image}`} alt={product.name} />
 
         <label className="btn-1 label-file">
           <svg

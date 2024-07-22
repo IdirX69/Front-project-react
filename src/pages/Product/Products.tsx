@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AdminNavigation from "../../components/AdminNavigation";
 import { Link } from "react-router-dom";
 import { ProductType } from "../../types/types";
 
 const Products = () => {
+  const apiKey = import.meta.env.VITE_API_KEY;
   const [products, setProducts] = useState([]);
+
   const fetchProducts = async () => {
-    const response = await fetch("http://localhost:5000/products");
+    const response = await fetch(`${apiKey}/products`);
     const data = await response.json();
     setProducts(data);
   };
@@ -16,7 +18,7 @@ const Products = () => {
   }, []);
 
   const handleDelete = async (id: number) => {
-    const response = await fetch("http://localhost:5000/products/" + id, {
+    const response = await fetch(`${apiKey}/products/` + id, {
       method: "DELETE",
     });
     fetchProducts();
