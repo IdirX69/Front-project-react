@@ -3,20 +3,24 @@ import AdminNavigation from "../../components/AdminNavigation";
 import { Link } from "react-router-dom";
 import AddCategories from "./AddCategories";
 import { CategoryType } from "../../types/types";
+import EditCategory from "./EditCategory";
 
 const Categories = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
+  const [edit, setEdit] = useState(false);
+  const [category, setCategory] = useState<CategoryType>();
   const [categories, setCategories] = useState([]);
   const fetchCategories = async () => {
     const response = await fetch(`${apiKey}/categories`);
     const data = await response.json();
+    console.log("fetch");
 
     setCategories(data);
   };
 
   useEffect(() => {
     fetchCategories();
-  }, []);
+  }, [edit]);
 
   const handleDelete = async (id: number) => {
     await fetch(`${apiKey}/categories/` + id, {
@@ -25,13 +29,21 @@ const Categories = () => {
     fetchCategories();
   };
 
-  console.log(categories);
+  const handeEdit = (category: CategoryType) => {
+    setCategory(category);
+    setEdit(true);
+  };
+
   return (
     <div className="admin-container">
       <AdminNavigation />
       <div className="dashboard">
         <h2>categories</h2>
-        <AddCategories fetchCategories={fetchCategories} />
+        {edit ? (
+          <EditCategory category={category} setEdit={setEdit} />
+        ) : (
+          <AddCategories fetchCategories={fetchCategories} />
+        )}
 
         <table className="products-table">
           <thead>
@@ -45,7 +57,7 @@ const Categories = () => {
               <tr key={category.id}>
                 <td>{category.name}</td>
                 <td className="td-link">
-                  <Link to={"/categories/edit/" + category.id}>
+                  <button onClick={() => handeEdit(category)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -61,7 +73,8 @@ const Categories = () => {
                       />
                     </svg>
                     Edit
-                  </Link>
+                  </button>
+
                   <button onClick={() => handleDelete(category.id)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
