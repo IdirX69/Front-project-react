@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { CategoryType } from "../../types/types";
 
-const EditCategory = ({ category, setEdit }: { category: CategoryType }) => {
+const EditCategory = ({
+  category,
+  setEdit,
+}: {
+  category: CategoryType;
+  setEdit: () => void;
+}) => {
   const { id, name } = category;
   const [newName, setNewName] = useState(name);
   const handleSubmit = async (e) => {

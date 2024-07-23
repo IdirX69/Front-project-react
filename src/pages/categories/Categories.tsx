@@ -7,13 +7,12 @@ import EditCategory from "./EditCategory";
 
 const Categories = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
-  const [edit, setEdit] = useState(false);
+  const [edit, setEdit] = useState<boolean>(false);
   const [category, setCategory] = useState<CategoryType>();
   const [categories, setCategories] = useState([]);
   const fetchCategories = async () => {
     const response = await fetch(`${apiKey}/categories`);
     const data = await response.json();
-    console.log("fetch");
 
     setCategories(data);
   };

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { getUserToken } from "../../services/session.service";
 
 interface AddCategoriesProps {
   fetchCategories?: () => void;
@@ -19,6 +20,8 @@ const AddCategories: React.FC<AddCategoriesProps> = ({ fetchCategories }) => {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const userToken = await getUserToken();
+
     e.preventDefault();
 
     try {
@@ -28,8 +31,10 @@ const AddCategories: React.FC<AddCategoriesProps> = ({ fetchCategories }) => {
 
       const categoryResponse = await fetch(`${apiKey}/categories`, {
         method: "POST",
+
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
         },
         body: JSON.stringify(categoryData),
       });
