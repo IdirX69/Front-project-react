@@ -1,10 +1,12 @@
 import React from "react";
-import AdminNavigation from "../components/AdminNavigation";
+import Navigation from "../components/Navigation";
+import Featured from "../components/Featured";
 
 const Home = () => {
   return (
     <div>
-      <AdminNavigation />
+      <Navigation />
+      <Featured />
     </div>
   );
 };

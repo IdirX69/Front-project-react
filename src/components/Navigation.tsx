@@ -6,14 +6,13 @@ const Navigation = () => {
   const { user } = useUser();
   return (
     <nav className="navigation">
+      <h1>Ecommerce</h1>
       <ul>
-        <li>Accueil</li>
-        <li>Produit</li>
-        <li>Site Name</li>
-
-        <Link to={user?.firstname ? "admin-dashboard" : "/profile"}>
-          {user && <li>{user?.firstname + " " + user.lastname}</li>}
-        </Link>
+        <Link to={"/"}>Home</Link>
+        <Link to={"/"}>All products</Link>
+        <Link to={"/"}>Categories</Link>
+        <Link to={"/"}>Account</Link>
+        <Link to={"/"}>Cart</Link>
       </ul>
     </nav>
   );

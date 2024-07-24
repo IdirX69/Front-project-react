@@ -45,12 +45,14 @@ const AddArticle = () => {
       const imageData = new FormData();
       imageData.append("image", formData.image);
 
-      const imageResponse = await fetch(`${apiKey}/articles/upload`, {
+      const imageResponse = await fetch(`${apiKey}/products/upload`, {
         method: "POST",
         body: imageData,
       });
 
       if (!imageResponse.ok) {
+        console.log(imageResponse);
+
         throw new Error("Image upload failed");
       }
 
@@ -66,7 +68,7 @@ const AddArticle = () => {
       };
       console.log(articleData);
 
-      const articleResponse = await fetch(`${apiKey}/articles`, {
+      const articleResponse = await fetch(`${apiKey}/products`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

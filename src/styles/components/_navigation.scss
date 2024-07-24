@@ -1,7 +1,21 @@
 .navigation {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #222;
+  align-items: center;
+  h1 {
+    margin-left: 2rem;
+  }
   ul {
+    font-size: 1.2rem;
+    width: 40%;
+    height: 100%;
     display: flex;
-    background-color: red;
     justify-content: space-around;
+    align-items: center;
+    a {
+      color: #aaa;
+    }
   }
 }

@@ -137,10 +137,84 @@ label {
   width: 50%;
 }
 
-.navigation ul {
+.navigation {
+  height: 70px;
   display: flex;
-  background-color: red;
+  justify-content: space-between;
+  background-color: #222;
+  align-items: center;
+}
+.navigation h1 {
+  margin-left: 2rem;
+}
+.navigation ul {
+  font-size: 1.2rem;
+  width: 40%;
+  height: 100%;
+  display: flex;
   justify-content: space-around;
+  align-items: center;
+}
+.navigation ul a {
+  color: #aaa;
+}
+
+.featured-container {
+  background-color: #222;
+  color: white;
+  font-size: 1.3rem;
+  padding: 50px 0;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 40px;
+}
+.featured-container div {
+  margin: 2rem;
+}
+.featured-container h2 {
+  font-size: 5rem;
+  margin-top: 0;
+  font-weight: normal;
+}
+.featured-container p {
+  color: #aaa;
+}
+.featured-container img {
+  max-width: 100%;
+}
+.featured-container .text-div {
+  display: flex;
+  flex-direction: column;
+  margin-right: 0;
+  justify-content: center;
+}
+.featured-container .btn-1 {
+  background-color: rgba(84, 66, 246, 0);
+  border: 1px solid white;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+.featured-container .btn-2 {
+  background-color: #5542f6;
+  border: 1px solid #5542f6;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  display: inline-flex;
+  gap: 5px;
+}
+.featured-container .btn-2 svg {
+  height: 20px;
+  color: white;
+}
+.featured-container .btn-div {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  margin-top: 25px;
 }
 
 .admin-navigation {
