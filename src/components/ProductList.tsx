@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import ProductCard from "./ProductCard";
 
-const ProductList = ({ products }) => {
+const ProductList = ({ products, title }) => {
   return (
     <div className="product-list-container">
+      <h2>{title}</h2>
       {products.map((product) => (
         <ProductCard product={product} />
       ))}
