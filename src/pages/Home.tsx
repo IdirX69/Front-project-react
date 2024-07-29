@@ -9,7 +9,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchProducts();
-  });
+  }, []);
 
   const fetchProducts = async () => {
     const response = await fetch(`${apiKey}/products`);
