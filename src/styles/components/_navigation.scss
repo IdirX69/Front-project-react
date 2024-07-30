@@ -1,21 +1,25 @@
-.navigation {
-  height: 70px;
-  display: flex;
-  justify-content: space-between;
+.navigation-container {
   background-color: #222;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  h1 {
-    margin-left: 2rem;
-  }
-  ul {
-    font-size: 1.2rem;
-    width: 40%;
-    height: 100%;
+  .navigation {
+    width: 70%;
+    height: 70px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    a {
-      color: #aaa;
+
+    ul {
+      font-size: 1.2rem;
+      width: 40%;
+      height: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      a {
+        color: #aaa;
+      }
     }
   }
 }

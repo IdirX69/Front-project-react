@@ -7,11 +7,15 @@ const ProductCard = ({ product }: { product: ProductType }) => {
 
   return (
     <div className="product-card-container">
-      <img src={`${apiKey}/uploads/${product.image}`} alt="" />
+      <div className="img-container">
+        <img src={`${apiKey}/uploads/${product.image}`} alt="" />
+      </div>
       <div className="product-info">
         <h3>{product.name}</h3>
-        <span>{product.category.name}</span>
-        <span>{product.price + "€"}</span>
+        <div>
+          <span>{product.price + "€"}</span>
+          <button className="btn-2">Add to cart</button>
+        </div>
       </div>
     </div>
   );
