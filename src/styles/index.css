@@ -249,16 +249,20 @@ label {
   border-radius: 6px;
   width: 22%;
   background-color: white;
-}
-.product-card-container div {
   display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.product-card-container .product-info {
+  display: flex;
+  flex-direction: column;
 }
 .product-card-container img {
-  height: 120px;
-  max-width: 120px;
+  height: 80px;
+  margin: 15px 0;
 }
 .product-card-container span {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .products-list-container {
@@ -267,7 +271,7 @@ label {
 .products-list-container h2 {
   padding: 2%;
 }
-.products-list-container div {
+.products-list-container .products-list {
   display: flex;
   margin: 0 1%;
   gap: 17px;

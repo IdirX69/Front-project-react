@@ -2,15 +2,19 @@
   border-radius: 6px;
   width: 22%;
   background-color: white;
-  div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  .product-info {
     display: flex;
+    flex-direction: column;
   }
 
   img {
-    height: 120px;
-    max-width: 120px;
+    height: 80px;
+    margin: 15px 0;
   }
   span {
-    font-size: 20px;
+    font-size: 15px;
   }
 }
