@@ -1,9 +1,12 @@
 import React from "react";
 import { ProductType } from "../types/types";
+import { useCart } from "../contexte/CartContext";
 
 const ProductCard = ({ product }: { product: ProductType }) => {
   const apiKey = import.meta.env.VITE_API_KEY;
   console.log(product?.category?.name);
+
+  const { addProduct } = useCart();
 
   return (
     <div className="product-card-container">
@@ -14,7 +17,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
         <h3>{product.name}</h3>
         <div>
           <span>{product.price + "€"}</span>
-          <button>Add to cart</button>
+          <button onClick={() => addProduct(product.id)}>Add to cart</button>
         </div>
       </div>
     </div>
