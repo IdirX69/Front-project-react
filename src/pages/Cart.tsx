@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Navigation from "../components/Navigation";
 import { useCart } from "../contexte/CartContext";
 import ProductList from "../components/ProductList";
+import CartProduct from "../components/CartProduct";
+import OrderInfo from "../components/OrderInfo";
 
 const Cart = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -28,10 +30,13 @@ const Cart = () => {
   console.log(cartProducts);
 
   return (
-    <div>
+    <>
       <Navigation />
-      <ProductList products={cartProducts} title="Cart" />
-    </div>
+      <div className="cart-container">
+        <CartProduct products={cartProducts} />
+        <OrderInfo />
+      </div>
+    </>
   );
 };
 
