@@ -14,6 +14,7 @@ interface CartContextType {
   cart: Cart[] | null;
   setCart: (cart: Cart[]) => void;
   addProduct: (product: Cart) => void;
+  removeProduct: (product: Cart) => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -28,6 +29,15 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   const addProduct = (product: Cart) => {
     setCart((prevCart) => [...prevCart, product]);
   };
+  const removeProduct = (product: Cart) => {
+    setCart((prev) => {
+      const pos = prev.indexOf(product);
+      if (pos !== -1) {
+        return prev.filter((value, index) => index !== pos);
+      }
+      return prev;
+    });
+  };
 
   useEffect(() => {
     if (cart.length > 0) {
@@ -36,7 +46,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   }, [cart]);
 
   return (
-    <CartContext.Provider value={{ cart, setCart, addProduct }}>
+    <CartContext.Provider value={{ cart, setCart, addProduct, removeProduct }}>
       {children}
     </CartContext.Provider>
   );

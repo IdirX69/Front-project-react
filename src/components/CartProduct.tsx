@@ -3,11 +3,21 @@ import { useCart } from "../contexte/CartContext";
 import { ProductType } from "../types/types";
 
 const CartProduct = ({ products }: { products: ProductType[] }) => {
-  const { cart } = useCart();
+  const { cart, addProduct, removeProduct } = useCart();
+
+  const moreProduct = (productId) => {
+    addProduct(productId);
+  };
+  const lessProduct = (productId) => {
+    removeProduct(productId);
+  };
 
   const getProductQuantity = (productId: number) => {
     return cart?.filter((item) => item === productId).length;
   };
+  const total = products.reduce((acc, element) => {
+    return acc + getProductQuantity(element.id) * element.price;
+  }, 0);
 
   return (
     <div className="cart-product-container">
@@ -35,10 +45,19 @@ const CartProduct = ({ products }: { products: ProductType[] }) => {
                 </div>
               </td>
 
-              <td>{getProductQuantity(prod.id)}</td>
-              <td>{prod.price}€</td>
+              <td>
+                <button onClick={() => lessProduct(prod.id)}>-</button>
+                {getProductQuantity(prod.id)}
+                <button onClick={() => moreProduct(prod.id)}>+</button>
+              </td>
+              <td>{prod.price * getProductQuantity(prod.id)}€</td>
             </tr>
           ))}
+          <tr>
+            <th></th>
+            <th></th>
+            <th>Total : {total}€</th>
+          </tr>
         </tbody>
       </table>
     </div>
