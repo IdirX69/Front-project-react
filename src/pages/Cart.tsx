@@ -23,11 +23,12 @@ const Cart = () => {
 
   useEffect(() => {
     const filteredProducts = products?.filter((product) =>
-      cart?.map((cartItem) => cartItem.id == product?.id)
+      cart?.some((cartItem) => cartItem == product.id)
     );
     setCartProducts(filteredProducts);
   }, [products, cart]);
-  console.log(cartProducts);
+
+  console.log(cart);
 
   return (
     <>

@@ -57,7 +57,7 @@ label {
   background-color: rgba(128, 128, 128, 0.192);
   color: black;
   display: grid;
-  grid-template-columns: 1.7fr 0.7fr;
+  grid-template-columns: 1.3fr 0.7fr;
 }
 
 .admin-container {
@@ -335,4 +335,53 @@ label {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 20px;
+}
+
+.cart-product-container {
+  padding: 40px;
+  background-color: white;
+  width: 90%;
+  border-radius: 8px;
+  margin: auto;
+  height: 90%;
+  overflow-y: auto;
+  scrollbar-width: thin; /* Width of the scrollbar */
+  scrollbar-color: #888 #f1f1f1;
+}
+.cart-product-container h3 {
+  font-size: 2.3rem;
+  padding: 5px;
+}
+.cart-product-container .cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+}
+.cart-product-container .cart-table .product-container {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 20px 0;
+}
+.cart-product-container .cart-table .product-container .img-container {
+  background-color: white;
+  min-height: 150px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.123);
+}
+.cart-product-container .cart-table .product-container .img-container img {
+  max-height: 150px;
+  max-width: 100%;
+}
+.cart-product-container .cart-table th {
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+.cart-product-container .cart-table td {
+  border-top: 1px solid rgba(0, 0, 0, 0.116);
 }/*# sourceMappingURL=index.css.map */
