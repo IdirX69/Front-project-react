@@ -5,15 +5,15 @@ import { ProductType } from "../types/types";
 const CartProduct = ({ products }: { products: ProductType[] }) => {
   const { cart, addProduct, removeProduct } = useCart();
 
-  const moreProduct = (productId) => {
+  const moreProduct = (productId: string) => {
     addProduct(productId);
   };
-  const lessProduct = (productId) => {
+  const lessProduct = (productId: string) => {
     removeProduct(productId);
   };
 
   const getProductQuantity = (productId: number) => {
-    return cart?.filter((item) => item === productId).length;
+    return cart?.filter((item) => parseInt(item) === productId).length;
   };
   const total = products.reduce((acc, element) => {
     return acc + getProductQuantity(element.id) * element.price;

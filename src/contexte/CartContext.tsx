@@ -6,15 +6,11 @@ import React, {
   ReactNode,
 } from "react";
 
-interface Cart {
-  id: string | number;
-}
-
 interface CartContextType {
-  cart: Cart[] | null;
-  setCart: (cart: Cart[]) => void;
-  addProduct: (product: Cart) => void;
-  removeProduct: (product: Cart) => void;
+  cart: string[] | null;
+  setCart: (cart: string[]) => void;
+  addProduct: (product: string) => void;
+  removeProduct: (product: string) => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -22,14 +18,14 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [cart, setCart] = useState<Cart[]>(
+  const [cart, setCart] = useState<string[]>(
     JSON.parse(localStorage.getItem("cart") || "[]")
   );
 
-  const addProduct = (product: Cart) => {
+  const addProduct = (product: string) => {
     setCart((prevCart) => [...prevCart, product]);
   };
-  const removeProduct = (product: Cart) => {
+  const removeProduct = (product: string) => {
     setCart((prev) => {
       const pos = prev.indexOf(product);
       if (pos !== -1) {
