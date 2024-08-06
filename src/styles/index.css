@@ -61,6 +61,42 @@ label {
   padding: 40px 0;
 }
 
+.login-form {
+  background-color: rgba(128, 128, 128, 0.116);
+  width: 50%;
+  border-radius: 8px;
+}
+.login-form h3 {
+  width: 50%;
+  margin: auto;
+  padding-left: 10px;
+  text-align: center;
+}
+.login-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.login-form form input {
+  width: 50%;
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  border: 1px solid rgba(0, 0, 0, 0.164);
+}
+.login-form form button {
+  width: 40%;
+  background-color: black;
+  color: white;
+  padding: 8px 30px;
+  margin-top: 15px;
+  border-radius: 4px;
+  font-size: large;
+}
+
 .admin-container {
   display: flex;
   min-height: 100%;

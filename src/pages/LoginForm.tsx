@@ -38,29 +38,32 @@ const LoginForm = () => {
   };
 
   return (
-    <form method="POST" onSubmit={handleSubmit}>
-      <input
-        type="email"
-        name="email"
-        value={formData.email}
-        onChange={handleChange}
-        required
-        placeholder="Votre email"
-      />
-      <input
-        type="password"
-        name="password"
-        value={formData.password}
-        onChange={handleChange}
-        required
-        placeholder="Mot de passe"
-      />
+    <div className="login-form">
+      <h3>Log In</h3>
+      <form method="POST" onSubmit={handleSubmit}>
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+          placeholder="Votre email"
+        />
+        <input
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+          placeholder="Mot de passe"
+        />
 
-      <button type="submit">Se Connecter</button>
-      <button type="button" onClick={() => logoutUser()}>
-        Se deconnecter
-      </button>
-    </form>
+        <button type="submit">Se Connecter</button>
+        <button type="button" onClick={() => logoutUser()}>
+          Se deconnecter
+        </button>
+      </form>
+    </div>
   );
 };
 

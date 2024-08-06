@@ -69,7 +69,8 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="login-form">
+      <h3>Create your account</h3>
       <form method="POST" onSubmit={handleSubmit}>
         <input
           type="email"
@@ -77,7 +78,7 @@ const Register: React.FC = () => {
           value={formData.email}
           onChange={handleChange}
           required
-          placeholder="Votre email"
+          placeholder="Your email"
         />
         <input
           type="password"
@@ -85,7 +86,7 @@ const Register: React.FC = () => {
           value={formData.password}
           onChange={handleChange}
           required
-          placeholder="Mot de passe"
+          placeholder="Your password"
         />
         <input
           type="text"
@@ -93,7 +94,7 @@ const Register: React.FC = () => {
           value={formData.firstname}
           onChange={handleChange}
           required
-          placeholder="Votre prénom"
+          placeholder="Firstname"
         />
         <input
           type="text"
@@ -101,7 +102,7 @@ const Register: React.FC = () => {
           value={formData.lastname}
           onChange={handleChange}
           required
-          placeholder="Votre nom"
+          placeholder="Lastname"
         />
         <input
           type="text"
@@ -109,9 +110,9 @@ const Register: React.FC = () => {
           value={formData.address}
           onChange={handleChange}
           required
-          placeholder="Adresse"
+          placeholder="Address"
         />
-        <button type="submit">Créer un compte</button>
+        <button type="submit">Create account</button>
       </form>
     </div>
   );
