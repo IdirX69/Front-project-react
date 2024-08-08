@@ -4,12 +4,14 @@ import { useCart } from "../contexte/CartContext";
 import ProductList from "../components/ProductList";
 import CartProduct from "../components/CartProduct";
 import OrderInfo from "../components/OrderInfo";
+import { useUser } from "../contexte/UserContext";
 
 const Cart = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
   const [cartProducts, setCartProducts] = useState([]);
   const [products, setProducts] = useState([]);
   const { cart } = useCart();
+  const { user } = useUser();
 
   const fetchProducts = async () => {
     const response = await fetch(`${apiKey}/products`);

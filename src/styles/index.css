@@ -431,8 +431,9 @@ label {
 .order-info-container {
   padding: 40px;
   background-color: white;
-  width: 90%;
   border-radius: 8px;
+  position: fixed;
+  right: 40px;
 }
 .order-info-container h3 {
   font-size: 2.3rem;

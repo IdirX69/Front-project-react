@@ -1,13 +1,16 @@
 import React from "react";
 import { useCart } from "../contexte/CartContext";
 import { ProductType } from "../types/types";
+import { useUser } from "../contexte/UserContext";
 
 const CartProduct = ({ products }: { products: ProductType[] }) => {
   const { cart, addProduct, removeProduct } = useCart();
+  const { user } = useUser();
 
   const moreProduct = (productId: string) => {
     addProduct(productId);
   };
+
   const lessProduct = (productId: string) => {
     removeProduct(productId);
   };
@@ -15,9 +18,38 @@ const CartProduct = ({ products }: { products: ProductType[] }) => {
   const getProductQuantity = (productId: number) => {
     return cart?.filter((item) => parseInt(item) === productId).length;
   };
+
   const total = products.reduce((acc, element) => {
     return acc + getProductQuantity(element.id) * element.price;
   }, 0);
+
+  const handleOrder = async () => {
+    const orderItems = products
+      .map((product) => ({
+        productId: product.id,
+        quantity: getProductQuantity(product.id),
+      }))
+      .filter((item) => item.quantity > 0);
+
+    const orderData = {
+      userId: user?.id,
+      items: orderItems,
+    };
+
+    const response = await fetch("http://localhost:5000/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(orderData),
+    });
+
+    if (response.ok) {
+      console.log("Order placed successfully");
+    } else {
+      console.error("Failed to place order");
+    }
+  };
 
   return (
     <div className="cart-product-container">
@@ -44,7 +76,6 @@ const CartProduct = ({ products }: { products: ProductType[] }) => {
                   {prod.name}
                 </div>
               </td>
-
               <td>
                 <button onClick={() => lessProduct(prod.id)}>-</button>
                 {getProductQuantity(prod.id)}
@@ -60,6 +91,7 @@ const CartProduct = ({ products }: { products: ProductType[] }) => {
           </tr>
         </tbody>
       </table>
+      <button onClick={handleOrder}>Place Order</button>
     </div>
   );
 };

@@ -15,7 +15,7 @@ const Navigation = () => {
           <Link to={"/"}>All products</Link>
           <Link to={"/"}>Categories</Link>
           <Link to={"/"}>Account</Link>
-          <Link to={"/"}>Cart({cart?.length})</Link>
+          <Link to={"/cart"}>Cart({cart?.length})</Link>
         </ul>
       </nav>
     </div>
