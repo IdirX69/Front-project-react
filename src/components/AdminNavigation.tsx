@@ -55,7 +55,7 @@ const AdminNavigation = () => {
           />
         </svg>
       </NavLink>
-      <NavLink to="/" className="link-admin">
+      <NavLink to="/orders" className="link-admin">
         <span>Orders</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
