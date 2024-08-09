@@ -13,6 +13,7 @@ import AddCategories from "./pages/categories/AddCategories";
 import Cart from "./pages/Cart";
 import { CartProvider } from "./contexte/CartContext";
 import Orders from "./pages/Orders";
+import Account from "./pages/Account";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<LoginForm />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/account" element={<Account />} />
             <Route path="/dashboard" element={<AdminDashboard />} />
             <Route path="/cart" element={<Cart />} />
             //products routes

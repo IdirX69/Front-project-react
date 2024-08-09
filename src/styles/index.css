@@ -97,6 +97,70 @@ label {
   font-size: large;
 }
 
+.account-page-container {
+  min-height: 100%;
+  width: 70%;
+  background-color: rgba(128, 128, 128, 0.116);
+  display: grid;
+  grid-template-columns: 0.6fr 1.4fr;
+  gap: 15px;
+  margin: auto;
+  color: black;
+}
+.account-page-container nav,
+.account-page-container div {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin: 10px;
+  gap: 5px;
+}
+.account-page-container nav h3,
+.account-page-container div h3 {
+  text-align: center;
+}
+.account-page-container nav div h3,
+.account-page-container div div h3 {
+  text-align: center;
+}
+.account-page-container nav div form,
+.account-page-container div div form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.account-page-container nav div form label,
+.account-page-container div div form label {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+  font-size: 0.8rem;
+}
+.account-page-container nav div form label input,
+.account-page-container div div form label input {
+  background-color: rgba(128, 128, 128, 0);
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.548);
+  width: 50%;
+}
+.account-page-container nav div form button,
+.account-page-container div div form button {
+  width: 40%;
+  background-color: black;
+  color: white;
+  padding: 8px 30px;
+  margin-top: 15px;
+  border-radius: 4px;
+  margin-left: 12.5%;
+  font-size: large;
+}
+.account-page-container span {
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 6px;
+}
+
 .admin-container {
   display: flex;
   min-height: 100%;
