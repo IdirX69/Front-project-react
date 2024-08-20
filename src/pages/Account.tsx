@@ -21,7 +21,7 @@ const Account = () => {
           <span>Information</span>
           <span>Orders</span>
         </nav>
-        <UserInfos />
+
         <OrdersList />
       </div>
     </>

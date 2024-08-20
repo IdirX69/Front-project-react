@@ -12,3 +12,26 @@ export type ProductType = {
   categoryId: number;
   price: string;
 };
+
+export type OrderItemType = {
+  product: {
+    name: string;
+    price: number;
+  };
+  quantity: number;
+};
+
+export type UserType = {
+  firstname: string;
+  email: string;
+  address: string;
+};
+
+export type OrderType = {
+  id: number;
+  createdAt: string;
+  total: number;
+  status: string;
+  items: OrderItemType[];
+  user: UserType;
+};

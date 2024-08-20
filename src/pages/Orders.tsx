@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import AdminNavigation from "../components/AdminNavigation";
+import { OrderType } from "../types/types";
 
 const Orders = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState<OrderType[]>([]);
 
   const fetchOrders = async () => {
     const response = await fetch(`${apiKey}/orders`);
@@ -32,7 +33,7 @@ const Orders = () => {
             </tr>
           </thead>
           <tbody>
-            {orders.map((product: ProductType) => (
+            {orders.map((product: OrderType) => (
               <tr key={product.id}>
                 <td>{product.createdAt}</td>
                 <td>{product.user.email}</td>
