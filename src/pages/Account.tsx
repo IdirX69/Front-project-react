@@ -1,10 +1,7 @@
 import Navigation from "../components/Navigation";
 import { useUser } from "../contexte/UserContext";
-
 import React, { useEffect, useState } from "react";
-
 import LoginForm from "./LoginForm";
-import UserInfos from "../components/UserInfos";
 import OrdersList from "../components/OrdersList";
 
 const Account = () => {
