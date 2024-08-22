@@ -3,23 +3,30 @@ import { useUser } from "../contexte/UserContext";
 import React, { useEffect, useState } from "react";
 import LoginForm from "./LoginForm";
 import OrdersList from "../components/OrdersList";
+import UserInfos from "../components/UserInfos";
 
 const Account = () => {
   const { user } = useUser();
-
+  const [information, setInformation] = useState(false);
+  const [orders, setOrders] = useState(false);
   if (!user) {
     return <LoginForm />;
   }
+
+  const handleClick = () => {
+    setInformation(!information);
+    setOrders(!orders);
+  };
   return (
     <>
       <Navigation />
       <div className="account-page-container">
         <nav>
-          <span>Information</span>
-          <span>Orders</span>
+          <button onClick={handleClick}>Information</button>
+          <button onClick={handleClick}>Orders</button>
         </nav>
-
-        <OrdersList />
+        {!information && <UserInfos />}
+        {orders && <OrdersList />}
       </div>
     </>
   );
