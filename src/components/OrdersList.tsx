@@ -49,7 +49,7 @@ const OrdersList = () => {
           ))}
         </tbody>
       </table>
-      {modal && <OrderDetail order={orderToDetail} />}
+      {modal && <OrderDetail order={orderToDetail} setModal={setModal} />}
     </div>
   );
 };

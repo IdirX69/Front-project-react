@@ -2,10 +2,13 @@ import React from "react";
 import { OrderType } from "../types/types";
 import moment from "moment";
 
-const OrderDetail = ({ order }: { order: OrderType }) => {
+const OrderDetail = ({ order, setModal }: { order: OrderType }) => {
   return (
     <div className="order-detail-container">
-      <h2>Order Details</h2>
+      <div className="order-detail-header">
+        <h2>Order Details</h2>
+        <span onClick={() => setModal(false)}>X</span>
+      </div>
 
       {/* Order Info */}
       <div className="order-info">

@@ -521,4 +521,21 @@ label {
   margin-top: 15px;
   border-radius: 4px;
   font-size: large;
+}
+
+.order-detail-container {
+  position: absolute;
+  height: 85%;
+  width: 46%;
+  background-color: white;
+  margin: 0 !important;
+  overflow: scroll;
+}
+.order-detail-container .order-detail-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.order-detail-container .order-detail-header span {
+  cursor: pointer;
 }/*# sourceMappingURL=index.css.map */
