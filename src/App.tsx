@@ -15,6 +15,7 @@ import { CartProvider } from "./contexte/CartContext";
 import Orders from "./pages/Orders";
 import Account from "./pages/Account";
 import AllProducts from "./pages/AllProducts";
+import AllCategories from "./pages/AllCategories";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             //categories routes
             <Route path="/categories" element={<Categories />} />
             <Route path="/categories/new" element={<AddCategories />} />
+            <Route path="/categories/all" element={<AllCategories />} />
             //orders routes
             <Route path="/orders" element={<Orders />} />
           </Routes>

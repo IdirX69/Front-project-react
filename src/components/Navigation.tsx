@@ -12,8 +12,8 @@ const Navigation = () => {
         <h1>Ecommerce</h1>
         <ul>
           <Link to={"/"}>Home</Link>
-          <Link to={"/"}>All products</Link>
-          <Link to={"/"}>Categories</Link>
+          <Link to={"/products/all"}>All products</Link>
+          <Link to={"/categories/all"}>Categories</Link>
           <Link to={"/account"}>Account</Link>
           <Link to={"/cart"}>Cart({cart?.length})</Link>
         </ul>

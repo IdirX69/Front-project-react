@@ -4,13 +4,14 @@ import React, { useEffect, useState } from "react";
 import LoginForm from "./LoginForm";
 import OrdersList from "../components/OrdersList";
 import UserInfos from "../components/UserInfos";
+import LoginRegister from "./LoginRegister";
 
 const Account = () => {
   const { user } = useUser();
   const [information, setInformation] = useState(false);
   const [orders, setOrders] = useState(false);
   if (!user) {
-    return <LoginForm />;
+    return <LoginRegister />;
   }
 
   const handleClick = () => {

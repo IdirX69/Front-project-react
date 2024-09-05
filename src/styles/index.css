@@ -97,6 +97,17 @@ label {
   font-size: large;
 }
 
+.login-register-container {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  height: 100%;
+  margin: auto;
+  margin-top: 2rem;
+  background-color: #fff;
+}
+
 .account-page-container {
   min-height: 100%;
   width: 70%;
