@@ -10,9 +10,18 @@
     text-align: left;
     color: black;
   }
+  .category-filter {
+    width: 70%;
+    select {
+      border-radius: 8px;
+      border-color: rgba(128, 128, 128, 0.452);
+      padding: 3px;
+    }
+  }
   .products-list {
     width: 70%;
     margin: 2rem;
+    margin-top: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 20px;

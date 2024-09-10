@@ -37,13 +37,12 @@ const ProductList = ({
       <h2>{title}</h2>
 
       <div className="category-filter">
-        <label htmlFor="category-select">Filter by category:</label>
         <select
           id="category-select"
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
         >
-          <option value="All">All categories</option>
+          <option value="All">All</option>
           {categories.map((category) => (
             <option key={category.id} value={category.name}>
               {category.name}
@@ -51,7 +50,6 @@ const ProductList = ({
           ))}
         </select>
       </div>
-
       <div className="products-list">
         {filteredProducts.map((product) => (
           <ProductCard product={product} key={product.id} />

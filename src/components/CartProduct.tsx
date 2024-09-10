@@ -90,8 +90,10 @@ const CartProduct = ({ products }: { products: ProductType[] }) => {
             <th>Total : {total}€</th>
           </tr>
         </tbody>
+        <button className="btn-2" onClick={handleOrder}>
+          Confirm
+        </button>
       </table>
-      <button onClick={handleOrder}>Place Order</button>
     </div>
   );
 };

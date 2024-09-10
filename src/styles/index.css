@@ -53,6 +53,15 @@ label {
   border-radius: 6px;
 }
 
+.btn-2 {
+  background-color: black;
+  color: white;
+  margin-top: 15px;
+  border-radius: 4px;
+  font-size: large;
+  padding: 8px 60px !important;
+}
+
 .cart-container {
   background-color: rgba(128, 128, 128, 0.192);
   color: black;
@@ -440,9 +449,18 @@ label {
   text-align: left;
   color: black;
 }
+.products-list-container .category-filter {
+  width: 70%;
+}
+.products-list-container .category-filter select {
+  border-radius: 8px;
+  border-color: rgba(128, 128, 128, 0.452);
+  padding: 3px;
+}
 .products-list-container .products-list {
   width: 70%;
   margin: 2rem;
+  margin-top: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 20px;
@@ -522,15 +540,6 @@ label {
   border-radius: 4px;
   border: none;
   border: 1px solid rgba(0, 0, 0, 0.164);
-}
-.order-info-container button {
-  background-color: black;
-  color: white;
-  padding: 8px 30px;
-  width: 100%;
-  margin-top: 15px;
-  border-radius: 4px;
-  font-size: large;
 }
 
 .order-detail-container {

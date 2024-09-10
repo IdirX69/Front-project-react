@@ -16,7 +16,6 @@ const OrderInfo = () => {
             <span>{user?.email}</span>
             <span>{user?.address}</span>
           </form>
-          <button>Continue to payement</button>
         </>
       ) : (
         <>
