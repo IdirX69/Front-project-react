@@ -31,7 +31,6 @@ const ProductList = ({
       : products.filter(
           (product) => product.category.name === selectedCategory
         );
-  console.log(products);
 
   return (
     <div className="products-list-container">
