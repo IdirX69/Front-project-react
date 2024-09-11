@@ -29,31 +29,33 @@ const CartProduct = ({
   }, 0);
 
   const handleOrder = async () => {
-    const orderItems = products
-      .map((product) => ({
-        productId: product.id,
-        quantity: getProductQuantity(product.id),
-      }))
-      .filter((item) => item.quantity > 0);
+    if (products.length > 0) {
+      const orderItems = products
+        .map((product) => ({
+          productId: product.id,
+          quantity: getProductQuantity(product.id),
+        }))
+        .filter((item) => item.quantity > 0);
 
-    const orderData = {
-      userId: user?.id,
-      items: orderItems,
-    };
+      const orderData = {
+        userId: user?.id,
+        items: orderItems,
+      };
 
-    const response = await fetch("http://localhost:5000/orders", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(orderData),
-    });
+      const response = await fetch("http://localhost:5000/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      });
 
-    if (response.ok) {
-      console.log("Order placed successfully");
-      clearCart();
-    } else {
-      console.error("Failed to place order");
+      if (response.ok) {
+        console.log("Order placed successfully");
+        clearCart();
+      } else {
+        console.error("Failed to place order");
+      }
     }
   };
 

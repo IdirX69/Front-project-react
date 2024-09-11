@@ -5,6 +5,7 @@ import ProductList from "../components/ProductList";
 import CartProduct from "../components/CartProduct";
 import OrderInfo from "../components/OrderInfo";
 import { useUser } from "../contexte/UserContext";
+import EmptyCart from "../components/EmptyCart";
 
 const Cart = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -29,17 +30,23 @@ const Cart = () => {
     setCartProducts(filteredProducts);
   }, [products, cart]);
 
-  console.log(cart);
+  console.log(cartProducts);
 
   return (
     <>
       <Navigation />
       <div className="cart-container">
-        <CartProduct
-          products={cartProducts}
-          setCartProducts={setCartProducts}
-        />
-        <OrderInfo />
+        {cartProducts.length == 0 ? (
+          <EmptyCart />
+        ) : (
+          <>
+            <CartProduct
+              products={cartProducts}
+              setCartProducts={setCartProducts}
+            />
+            <OrderInfo />
+          </>
+        )}
       </div>
     </>
   );
