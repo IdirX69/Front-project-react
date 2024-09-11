@@ -11,7 +11,6 @@ const Cart = () => {
   const [cartProducts, setCartProducts] = useState([]);
   const [products, setProducts] = useState([]);
   const { cart } = useCart();
-  const { user } = useUser();
 
   const fetchProducts = async () => {
     const response = await fetch(`${apiKey}/products`);
@@ -36,7 +35,10 @@ const Cart = () => {
     <>
       <Navigation />
       <div className="cart-container">
-        <CartProduct products={cartProducts} />
+        <CartProduct
+          products={cartProducts}
+          setCartProducts={setCartProducts}
+        />
         <OrderInfo />
       </div>
     </>

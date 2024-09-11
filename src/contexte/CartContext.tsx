@@ -9,6 +9,7 @@ import React, {
 interface CartContextType {
   cart: string[] | null;
   setCart: (cart: string[]) => void;
+  clearCart: () => void;
   addProduct: (product: string) => void;
   removeProduct: (product: string) => void;
 }
@@ -34,6 +35,9 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
       return prev;
     });
   };
+  const clearCart = () => {
+    localStorage.setItem("cart", "[]");
+  };
 
   useEffect(() => {
     if (cart.length > 0) {
@@ -42,7 +46,9 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
   }, [cart]);
 
   return (
-    <CartContext.Provider value={{ cart, setCart, addProduct, removeProduct }}>
+    <CartContext.Provider
+      value={{ cart, setCart, addProduct, removeProduct, clearCart }}
+    >
       {children}
     </CartContext.Provider>
   );

@@ -3,8 +3,13 @@ import { useCart } from "../contexte/CartContext";
 import { ProductType } from "../types/types";
 import { useUser } from "../contexte/UserContext";
 
-const CartProduct = ({ products }: { products: ProductType[] }) => {
-  const { cart, addProduct, removeProduct } = useCart();
+const CartProduct = ({
+  products,
+  setCartProducts,
+}: {
+  products: ProductType[];
+}) => {
+  const { cart, clearCart, addProduct, removeProduct } = useCart();
   const { user } = useUser();
 
   const moreProduct = (productId: string) => {
@@ -46,6 +51,7 @@ const CartProduct = ({ products }: { products: ProductType[] }) => {
 
     if (response.ok) {
       console.log("Order placed successfully");
+      clearCart();
     } else {
       console.error("Failed to place order");
     }
