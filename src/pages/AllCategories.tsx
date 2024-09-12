@@ -5,10 +5,10 @@ import Navigation from "../components/Navigation";
 const AllCategories = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
   const [categories, setCategories] = useState<CategoryType[]>([]);
+
   const fetchCategories = async () => {
     const response = await fetch(`${apiKey}/categories`);
     const data = await response.json();
-
     setCategories(data);
   };
 
@@ -16,15 +16,17 @@ const AllCategories = () => {
     fetchCategories();
   }, []);
 
-  console.log(categories);
-
   return (
-    <div>
+    <div className="all-categories-container">
       <Navigation />
-      <h2>Chose your catergory</h2>
-      {categories.map((category) => (
-        <span>{category.name}</span>
-      ))}
+      <h2 className="categories-title">Choose your category</h2>
+      <div className="categories-list">
+        {categories.map((category) => (
+          <span key={category.name} className="category-item">
+            {category.name}
+          </span>
+        ))}
+      </div>
     </div>
   );
 };

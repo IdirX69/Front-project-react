@@ -1,0 +1,29 @@
+.all-categories-container {
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+.categories-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.categories-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.category-item {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}
