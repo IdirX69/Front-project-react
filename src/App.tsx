@@ -16,6 +16,7 @@ import Orders from "./pages/Orders";
 import Account from "./pages/Account";
 import AllProducts from "./pages/AllProducts";
 import AllCategories from "./pages/AllCategories";
+import Error from "./pages/Error";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <CartProvider>
         <Router>
           <Routes>
+            <Route path="*" element={<Error />} />
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<LoginForm />} />
