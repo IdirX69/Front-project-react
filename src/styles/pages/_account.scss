@@ -1,19 +1,40 @@
 .account-page-container {
   min-height: 100%;
-  width: 70%;
+  width: 90%;
   background-color: rgba(128, 128, 128, 0.116);
-  display: grid;
-  grid-template-columns: 0.6fr 1.4fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 15px;
   margin: auto;
   color: black;
-  nav,
+
+  nav {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    gap: 5px;
+    width: 100%;
+    justify-content: center;
+    button {
+      width: 10%;
+      background-color: rgb(175, 93, 93);
+      color: white;
+      padding: 8px 12px;
+      margin-top: 15px;
+      border-radius: 4px;
+      font-size: large;
+      border: none;
+    }
+  }
   div {
     display: flex;
     flex-direction: column;
-    padding: 15px;
+
     margin: 10px;
     gap: 5px;
+    width: 70%;
     h3 {
       text-align: center;
     }

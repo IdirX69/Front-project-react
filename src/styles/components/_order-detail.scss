@@ -1,12 +1,12 @@
 .order-detail-container {
   position: absolute;
-  height: 85%;
-  width: 46%;
   background-color: white;
-
-  margin: 0 !important;
   overflow: scroll;
   .order-detail-header {
+    width: 100%;
+    gap: 0;
+    margin: 0;
+    padding: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

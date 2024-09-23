@@ -3,7 +3,6 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import { UserProvider } from "./contexte/UserContext";
 import LoginForm from "./pages/LoginForm";
-import Profile from "./pages/Profile";
 import AdminDashboard from "./pages/Product/AdminDashboard";
 import Products from "./pages/Product/Products";
 import AddProduct from "./pages/Product/AddProduct";
@@ -17,6 +16,8 @@ import Account from "./pages/Account";
 import AllProducts from "./pages/AllProducts";
 
 import Error from "./pages/Error";
+import UserInfos from "./components/UserInfos";
+import OrdersList from "./components/OrdersList";
 
 function App() {
   return (
@@ -28,7 +29,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<LoginForm />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/account/infos" element={<UserInfos />} />
+            <Route path="/account/orders" element={<OrdersList />} />
             <Route path="/account" element={<Account />} />
             <Route path="/dashboard" element={<AdminDashboard />} />
             <Route path="/cart" element={<Cart />} />
