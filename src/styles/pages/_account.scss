@@ -10,24 +10,6 @@
   margin: auto;
   color: black;
 
-  nav {
-    display: flex;
-    flex-direction: row;
-    margin: 10px;
-    gap: 5px;
-    width: 100%;
-    justify-content: center;
-    button {
-      width: 10%;
-      background-color: rgb(175, 93, 93);
-      color: white;
-      padding: 8px 12px;
-      margin-top: 15px;
-      border-radius: 4px;
-      font-size: large;
-      border: none;
-    }
-  }
   div {
     display: flex;
     flex-direction: column;

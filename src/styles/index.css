@@ -128,24 +128,6 @@ label {
   margin: auto;
   color: black;
 }
-.account-page-container nav {
-  display: flex;
-  flex-direction: row;
-  margin: 10px;
-  gap: 5px;
-  width: 100%;
-  justify-content: center;
-}
-.account-page-container nav button {
-  width: 10%;
-  background-color: rgb(175, 93, 93);
-  color: white;
-  padding: 8px 12px;
-  margin-top: 15px;
-  border-radius: 4px;
-  font-size: large;
-  border: none;
-}
 .account-page-container div {
   display: flex;
   flex-direction: column;
@@ -584,6 +566,26 @@ label {
   border-radius: 4px;
   border: none;
   border: 1px solid rgba(0, 0, 0, 0.164);
+}
+
+.account-navigation {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  gap: 5px;
+  width: 100%;
+  justify-content: center;
+  background-color: gray;
+}
+.account-navigation a {
+  width: 10%;
+  background-color: rgb(175, 93, 93);
+  color: white;
+  padding: 8px 12px;
+  margin-top: 15px;
+  border-radius: 4px;
+  font-size: large;
+  border: none;
 }
 
 .order-detail-container {
