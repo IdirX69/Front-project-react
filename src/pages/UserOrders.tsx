@@ -5,11 +5,13 @@ import OrdersList from "../components/OrdersList";
 
 const UserOrders = () => {
   return (
-    <div>
+    <>
       <Navigation />
-      <AccountNavigation />
-      <OrdersList />
-    </div>
+      <div className="user-order-container">
+        <AccountNavigation />
+        <OrdersList />
+      </div>
+    </>
   );
 };
 

@@ -28,7 +28,7 @@ const OrdersList = () => {
 
   return (
     <>
-      <div>
+      <div className="order-list-container">
         <h2>My orders</h2>
         <table>
           <thead>

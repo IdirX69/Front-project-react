@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const AccountNavigation = () => {
   return (
     <nav className="account-navigation">
-      <NavLink to={"/account/infos"}>Information</NavLink>
+      <NavLink to={"/account"}>Information</NavLink>
       <NavLink to={"/account/orders"}>Orders</NavLink>
     </nav>
   );

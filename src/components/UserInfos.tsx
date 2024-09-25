@@ -61,8 +61,6 @@ const UserInfos = () => {
   };
   return (
     <div>
-      <Navigation />
-      <AccountNavigation />
       <h3>hello {user?.firstname}</h3>
       <div>
         <h3>my information</h3>

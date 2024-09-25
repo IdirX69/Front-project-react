@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import LoginRegister from "./LoginRegister";
 import { NavLink } from "react-router-dom";
 import AccountNavigation from "../components/AccountNavigation";
+import UserInfos from "../components/UserInfos";
 
 const Account = () => {
   const { user } = useUser();
@@ -18,6 +19,7 @@ const Account = () => {
       <Navigation />
       <div className="account-page-container">
         <AccountNavigation />
+        <UserInfos />
       </div>
     </>
   );
