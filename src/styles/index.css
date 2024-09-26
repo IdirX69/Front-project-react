@@ -651,19 +651,77 @@ label {
 }
 
 .order-detail-container {
-  position: absolute;
-  background-color: white;
-  overflow: scroll;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 800px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .order-detail-container .order-detail-header {
-  width: 100%;
-  gap: 0;
-  margin: 0;
-  padding: 10px;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.order-detail-container .order-detail-header h2 {
+  font-size: 24px;
+  color: #333;
 }
 .order-detail-container .order-detail-header span {
+  font-size: 20px;
   cursor: pointer;
+  color: #ff5c5c;
+  transition: color 0.3s ease;
+}
+.order-detail-container .order-detail-header span:hover {
+  color: #ff2929;
+}
+.order-detail-container .order-info,
+.order-detail-container .user-info,
+.order-detail-container .products-info {
+  margin-bottom: 20px;
+}
+.order-detail-container .order-info p,
+.order-detail-container .user-info p,
+.order-detail-container .products-info p {
+  margin: 5px 0;
+  color: #333;
+}
+.order-detail-container .order-info p strong,
+.order-detail-container .user-info p strong,
+.order-detail-container .products-info p strong {
+  font-weight: bold;
+}
+.order-detail-container .order-info h3,
+.order-detail-container .user-info h3,
+.order-detail-container .products-info h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #333;
+}
+.order-detail-container .products-info .product-card {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: white;
+}
+.order-detail-container .products-info .product-card .product-details p {
+  margin: 5px 0;
+}
+.order-detail-container .order-total {
+  text-align: right;
+}
+.order-detail-container .order-total h3 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #007bff;
 }/*# sourceMappingURL=index.css.map */
