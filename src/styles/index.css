@@ -724,4 +724,14 @@ label {
   font-size: 22px;
   font-weight: bold;
   color: #007bff;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }/*# sourceMappingURL=index.css.map */

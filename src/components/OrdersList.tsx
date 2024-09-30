@@ -5,10 +5,10 @@ import OrderDetail from "./OrderDetail";
 import AccountNavigation from "./AccountNavigation";
 import Navigation from "./Navigation";
 
-const OrdersList = () => {
+const OrdersList = ({ modal, setModal }) => {
   const apiKey = import.meta.env.VITE_API_KEY;
   const [orders, setOrders] = useState<OrderType[]>([]);
-  const [modal, setModal] = useState(false);
+
   const [orderToDetail, setOrderToDetail] = useState<OrderType>([]);
 
   const fetchOrders = async () => {
@@ -28,7 +28,11 @@ const OrdersList = () => {
 
   return (
     <>
-      <div className="order-list-container">
+      <div
+        className={
+          modal ? "order-list-container no-scroll" : "order-list-container"
+        }
+      >
         <h2>My orders</h2>
         <table>
           <thead>
@@ -52,7 +56,13 @@ const OrdersList = () => {
             ))}
           </tbody>
         </table>
-        {modal && <OrderDetail order={orderToDetail} setModal={setModal} />}
+        {modal && (
+          <OrderDetail
+            order={orderToDetail}
+            setModal={setModal}
+            modal={modal}
+          />
+        )}
       </div>
     </>
   );

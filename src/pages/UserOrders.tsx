@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Navigation from "../components/Navigation";
 import AccountNavigation from "../components/AccountNavigation";
 import OrdersList from "../components/OrdersList";
 
 const UserOrders = () => {
+  const [modal, setModal] = useState(false);
   return (
     <>
       <Navigation />
-      <div className="user-order-container">
+      <div
+        className={
+          modal ? "user-order-container no-scroll" : "user-order-container"
+        }
+      >
         <AccountNavigation />
-        <OrdersList />
+        <OrdersList setModal={setModal} modal={modal} />
       </div>
     </>
   );
