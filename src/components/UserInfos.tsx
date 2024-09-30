@@ -60,10 +60,9 @@ const UserInfos = () => {
     }));
   };
   return (
-    <div>
+    <div className="user-info-container">
       <h3>hello {user?.firstname}</h3>
       <div>
-        <h3>my information</h3>
         <form onSubmit={handleSubmit}>
           <label>
             Firstname

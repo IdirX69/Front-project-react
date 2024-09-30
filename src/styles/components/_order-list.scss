@@ -58,6 +58,7 @@ $shadow-color: rgba(0, 0, 0, 0.1);
           border-radius: 5px;
           cursor: pointer;
           transition: background-color 0.3s ease;
+          margin: 8px 0;
 
           &:hover {
             background-color: $button-hover-bg;
