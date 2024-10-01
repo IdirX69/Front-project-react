@@ -16,8 +16,6 @@ import Account from "./pages/Account";
 import AllProducts from "./pages/AllProducts";
 
 import Error from "./pages/Error";
-import UserInfos from "./components/UserInfos";
-import OrdersList from "./components/OrdersList";
 import UserOrders from "./pages/UserOrders";
 
 function App() {
@@ -31,7 +29,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<LoginForm />} />
             <Route path="/account/orders" element={<UserOrders />} />
-            <Route path="/account" element={<Account />} />
+            <Route path="/account/infos" element={<Account />} />
             <Route path="/dashboard" element={<AdminDashboard />} />
             <Route path="/cart" element={<Cart />} />
             //products routes
