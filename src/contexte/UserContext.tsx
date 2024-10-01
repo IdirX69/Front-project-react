@@ -13,6 +13,9 @@ interface User {
   email: string;
   firstname: string;
   lastname: string;
+  city: string;
+  zipcode: string;
+  address: string;
 }
 
 interface UserContextType {

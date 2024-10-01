@@ -11,6 +11,8 @@ const Register: React.FC = () => {
     firstname: "",
     lastname: "",
     address: "",
+    city: "",
+    zipcode: "",
   });
 
   const { setUser } = useUser();
@@ -111,6 +113,22 @@ const Register: React.FC = () => {
           onChange={handleChange}
           required
           placeholder="Address"
+        />
+        <input
+          type="text"
+          name="zipcode"
+          value={formData.zipcode}
+          onChange={handleChange}
+          required
+          placeholder="Zipcode"
+        />
+        <input
+          type="text"
+          name="city"
+          value={formData.city}
+          onChange={handleChange}
+          required
+          placeholder="City"
         />
         <button type="submit">Create account</button>
       </form>
