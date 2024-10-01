@@ -24,6 +24,7 @@ body {
   width: 100%;
   font-family: "Saira Condensed", sans-serif;
   color: rgb(219, 217, 217);
+  background-color: rgb(240, 240, 240);
 }
 
 li {
@@ -63,7 +64,6 @@ label {
 }
 
 .cart-container {
-  background-color: rgba(128, 128, 128, 0.192);
   color: black;
   display: grid;
   grid-template-columns: 1.3fr 0.7fr;
@@ -735,4 +735,21 @@ span {
   background-color: #fff;
   padding: 5px;
   border-radius: 6px;
+}
+
+.cart-empty-container {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  height: 300px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 800px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,16 @@
+.cart-empty-container {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  height: 300px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 800px;
+  box-shadow: 0 4px 8px $shadow-color;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

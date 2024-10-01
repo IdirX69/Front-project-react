@@ -35,10 +35,10 @@ const Cart = () => {
   return (
     <>
       <Navigation />
-      <div className="cart-container">
-        {cartProducts.length == 0 ? (
-          <EmptyCart />
-        ) : (
+      {cartProducts.length == 0 ? (
+        <EmptyCart />
+      ) : (
+        <div className="cart-container">
           <>
             <CartProduct
               products={cartProducts}
@@ -46,8 +46,8 @@ const Cart = () => {
             />
             <OrderInfo />
           </>
-        )}
-      </div>
+        </div>
+      )}
     </>
   );
 };
