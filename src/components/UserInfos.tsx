@@ -11,6 +11,8 @@ const UserInfos = () => {
     lastname: "",
     email: "",
     address: "",
+    city: "",
+    zipcode: "",
   });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -43,6 +45,8 @@ const UserInfos = () => {
         lastname: user.lastname,
         email: user.email,
         address: user.address,
+        city: user.city,
+        zipcode: user.zipcode,
       });
   }, [user]);
   console.log(user);
@@ -97,6 +101,24 @@ const UserInfos = () => {
               onChange={handleChange}
               value={infos?.address}
               name="address"
+            />
+          </label>
+          <label>
+            Zipcode
+            <input
+              type="text"
+              onChange={handleChange}
+              value={infos?.zipcode}
+              name="zipcode"
+            />
+          </label>
+          <label>
+            City
+            <input
+              type="text"
+              onChange={handleChange}
+              value={infos?.city}
+              name="city"
             />
           </label>
           <button type="submit">Save</button>
