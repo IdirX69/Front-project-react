@@ -408,6 +408,7 @@ label {
   justify-content: center;
   align-items: center;
   padding: 15px;
+  cursor: pointer;
 }
 .product-card-container .img-container img {
   max-height: 120px;

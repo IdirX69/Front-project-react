@@ -17,6 +17,7 @@ import AllProducts from "./pages/AllProducts";
 
 import Error from "./pages/Error";
 import UserOrders from "./pages/UserOrders";
+import ProductInfo from "./pages/ProductInfo";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/products/new" element={<AddProduct />} />
             <Route path="/products/edit/:id" element={<EditProduct />} />
+            <Route path="/products/:id" element={<ProductInfo />} />
             <Route path="/products/all" element={<AllProducts />} />
             //categories routes
             <Route path="/categories" element={<Categories />} />
