@@ -15,7 +15,7 @@ const OrderInfo = () => {
             <span>{user?.lastname}</span>
             <span>{user?.email}</span>
             <span>{user?.address}</span>
-            <span>{user?.zipcode + " " + cuser?.city}</span>
+            <span>{user?.zipcode + " " + user?.city}</span>
           </form>
         </>
       ) : (
