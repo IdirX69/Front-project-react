@@ -1,18 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { ProductType } from "../types/types";
+import { useNavigate } from "react-router-dom";
 
 const Featured = () => {
+  const apiKey = import.meta.env.VITE_API_KEY;
+  const [product, setProduct] = useState<ProductType>([]);
+  const navigate = useNavigate();
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+    const response = await fetch(`${apiKey}/products/${5}`);
+    const data = await response.json();
+    setProduct(data);
+  };
   return (
     <div className="featured-container">
       <div className="featured">
         <div className="text-div">
-          <h2>Pro anywhere</h2>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab, odit
-            nesciunt corporis esse optio ut modi soluta veniam adipisci iure
-            dolore illo id nulla suscipit aut officia possimus maiores minus.
-          </p>
+          <h2>{product.name}</h2>
+          <p>{product.description}</p>
           <div className="btn-div">
-            <button className="btn-1">Read more</button>
+            <button
+              className="btn-1"
+              onClick={() => navigate(`/products/${product.id}`)}
+            >
+              Read more
+            </button>
             <button className="btn-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

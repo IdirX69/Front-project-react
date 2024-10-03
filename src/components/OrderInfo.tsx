@@ -15,6 +15,7 @@ const OrderInfo = () => {
             <span>{user?.lastname}</span>
             <span>{user?.email}</span>
             <span>{user?.address}</span>
+            <span>{user?.zipcode + " " + user?.city}</span>
           </form>
         </>
       ) : (
@@ -22,11 +23,7 @@ const OrderInfo = () => {
           <p>Connect or register to see your order information</p>
 
           <Link to="/login">
-            <button>Login</button>
-          </Link>
-          <Link to="/register">
-            {" "}
-            <button>Sign up</button>
+            <button className="btn-2">Login or Register</button>
           </Link>
         </>
       )}

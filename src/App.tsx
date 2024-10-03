@@ -2,8 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import { UserProvider } from "./contexte/UserContext";
-import LoginForm from "./pages/LoginForm";
-import Profile from "./pages/Profile";
+import LoginRegister from "./pages/LoginRegister";
 import AdminDashboard from "./pages/Product/AdminDashboard";
 import Products from "./pages/Product/Products";
 import AddProduct from "./pages/Product/AddProduct";
@@ -17,6 +16,8 @@ import Account from "./pages/Account";
 import AllProducts from "./pages/AllProducts";
 
 import Error from "./pages/Error";
+import UserOrders from "./pages/UserOrders";
+import ProductInfo from "./pages/ProductInfo";
 
 function App() {
   return (
@@ -26,16 +27,16 @@ function App() {
           <Routes>
             <Route path="*" element={<Error />} />
             <Route path="/" element={<Home />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<LoginForm />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/account" element={<Account />} />
+            <Route path="/login" element={<LoginRegister />} />
+            <Route path="/account/orders" element={<UserOrders />} />
+            <Route path="/account/infos" element={<Account />} />
             <Route path="/dashboard" element={<AdminDashboard />} />
             <Route path="/cart" element={<Cart />} />
             //products routes
             <Route path="/products" element={<Products />} />
             <Route path="/products/new" element={<AddProduct />} />
             <Route path="/products/edit/:id" element={<EditProduct />} />
+            <Route path="/products/:id" element={<ProductInfo />} />
             <Route path="/products/all" element={<AllProducts />} />
             //categories routes
             <Route path="/categories" element={<Categories />} />

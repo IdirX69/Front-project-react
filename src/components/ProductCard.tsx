@@ -1,6 +1,7 @@
 import React from "react";
 import { ProductType } from "../types/types";
 import { useCart } from "../contexte/CartContext";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }: { product: ProductType }) => {
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -8,8 +9,13 @@ const ProductCard = ({ product }: { product: ProductType }) => {
 
   const { addProduct } = useCart();
 
+  const navigate = useNavigate();
+
   return (
-    <div className="product-card-container">
+    <div
+      className="product-card-container"
+      onClick={() => navigate(`/products/${product.id}`)}
+    >
       <div className="img-container">
         <img src={`${apiKey}/uploads/${product.image}`} alt="" />
       </div>

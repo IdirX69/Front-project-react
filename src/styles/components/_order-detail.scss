@@ -1,17 +1,103 @@
-.order-detail-container {
-  position: absolute;
-  height: 85%;
-  width: 46%;
-  background-color: white;
+$order-bg-color: #fff;
+$modal-bg-color: rgba(0, 0, 0, 0.5);
+$primary-color: #007bff;
+$text-color: #333;
+$border-color: #e0e0e0;
+$close-btn-color: #ff5c5c;
+$shadow-color: rgba(0, 0, 0, 0.1);
 
-  margin: 0 !important;
-  overflow: scroll;
+.order-detail-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $order-bg-color;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 800px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px $shadow-color;
+
   .order-detail-header {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h2 {
+      font-size: 24px;
+      color: $text-color;
+    }
+
     span {
+      font-size: 20px;
       cursor: pointer;
+      color: $close-btn-color;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: darken($close-btn-color, 10%);
+      }
     }
   }
+
+  .order-info,
+  .user-info,
+  .products-info {
+    margin-bottom: 20px;
+
+    p {
+      margin: 5px 0;
+      color: $text-color;
+
+      strong {
+        font-weight: bold;
+      }
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      color: $text-color;
+    }
+  }
+
+  .products-info {
+    .product-card {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      border: 1px solid $border-color;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      background-color: lighten($order-bg-color, 5%);
+
+      .product-details {
+        p {
+          margin: 5px 0;
+        }
+      }
+    }
+  }
+
+  .order-total {
+    text-align: right;
+
+    h3 {
+      font-size: 22px;
+      font-weight: bold;
+      color: $primary-color;
+    }
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $modal-bg-color;
+  z-index: 999;
 }

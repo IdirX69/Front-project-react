@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "../contexte/UserContext";
+import AccountNavigation from "./AccountNavigation";
+import Navigation from "./Navigation";
 
 const UserInfos = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -11,6 +13,8 @@ const UserInfos = () => {
     lastname: "",
     email: "",
     address: "",
+    city: "",
+    zipcode: "",
   });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -43,6 +47,8 @@ const UserInfos = () => {
         lastname: user.lastname,
         email: user.email,
         address: user.address,
+        city: user.city,
+        zipcode: user.zipcode,
       });
   }, [user]);
   console.log(user);
@@ -58,10 +64,9 @@ const UserInfos = () => {
     }));
   };
   return (
-    <div>
+    <div className="user-info-container">
       <h3>hello {user?.firstname}</h3>
       <div>
-        <h3>my information</h3>
         <form onSubmit={handleSubmit}>
           <label>
             Firstname
@@ -97,6 +102,24 @@ const UserInfos = () => {
               onChange={handleChange}
               value={infos?.address}
               name="address"
+            />
+          </label>
+          <label>
+            Zipcode
+            <input
+              type="text"
+              onChange={handleChange}
+              value={infos?.zipcode}
+              name="zipcode"
+            />
+          </label>
+          <label>
+            City
+            <input
+              type="text"
+              onChange={handleChange}
+              value={infos?.city}
+              name="city"
             />
           </label>
           <button type="submit">Save</button>

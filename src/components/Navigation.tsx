@@ -13,7 +13,7 @@ const Navigation = () => {
         <ul>
           <Link to={"/"}>Home</Link>
           <Link to={"/products/all"}>All products</Link>
-          <Link to={"/account"}>Account</Link>
+          <Link to={"/account/infos"}>Account</Link>
           <Link to={"/cart"}>Cart({cart?.length})</Link>
         </ul>
       </nav>

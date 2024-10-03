@@ -23,6 +23,7 @@
         border-radius: 5px;
         font-size: 0.8rem;
         font-weight: 550;
+        cursor: pointer;
       }
     }
     h3 {
@@ -39,13 +40,15 @@
     justify-content: center;
     align-items: center;
     padding: 15px;
+    cursor: pointer;
     img {
-      max-height: 150px;
+      max-height: 120px;
       max-width: 100%;
     }
   }
   span {
     font-size: 25px;
     font-weight: bold;
+    background-color: rgba(255, 255, 255, 0);
   }
 }
