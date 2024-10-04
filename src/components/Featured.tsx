@@ -42,10 +42,7 @@ const Featured = () => {
           </div>
         </div>
         <div className="img-featured">
-          <img
-            src="https://dawid-next-ecommerce.s3.amazonaws.com/1679151719649.png"
-            alt=""
-          />
+          <img src={`${apiKey}/uploads/${product.image}`} alt="" />
         </div>
       </div>
     </div>

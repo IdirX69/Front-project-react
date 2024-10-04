@@ -22,11 +22,15 @@ const ProductInfo = () => {
   return (
     <>
       <Navigation />
-      <div>
-        <p>{product.name}</p>
-        <p>{product.description}</p>
-        <p>{product.price}</p>
-        <img src={`${apiKey}/uploads/${product.image}`} alt="" />
+      <div className="product-info-container">
+        <div className="img-container">
+          <p>{product.name}</p>
+          <img src={`${apiKey}/uploads/${product.image}`} alt="" />
+        </div>
+        <div className="product-info">
+          <p>{product.price}</p>
+          <p>{product.description}</p>
+        </div>
       </div>
     </>
   );
