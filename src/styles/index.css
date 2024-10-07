@@ -171,6 +171,7 @@ label {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   max-width: 800px;
   margin: 20px auto;
+  position: absolute;
 }
 .product-info-container .img-container {
   text-align: center;
@@ -184,7 +185,7 @@ label {
 }
 .product-info-container .img-container img {
   max-width: 100%;
-  height: auto;
+  height: 200px;
   border-radius: 8px;
 }
 .product-info-container .product-info {

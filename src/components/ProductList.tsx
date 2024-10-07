@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import { ProductType } from "../types/types";
+import ProductInfo from "../pages/ProductInfo";
 
 const ProductList = ({
   products,
@@ -9,11 +10,18 @@ const ProductList = ({
   products: ProductType[];
   title: string;
 }) => {
+  const [id, setId] = useState("");
+  const [modal, setModal] = useState(false);
   const apiKey = import.meta.env.VITE_API_KEY;
   const [categories, setCategories] = useState<{ id: string; name: string }[]>(
     []
   );
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
+
+  const handleClick = (id) => {
+    setId(id);
+    setModal(true);
+  };
 
   const fetchCategories = async () => {
     const response = await fetch(`${apiKey}/categories`);
@@ -50,9 +58,14 @@ const ProductList = ({
           ))}
         </select>
       </div>
+      {modal && <ProductInfo id={id} setModal={setModal} />}
       <div className="products-list">
         {filteredProducts.map((product) => (
-          <ProductCard product={product} key={product.id} />
+          <ProductCard
+            product={product}
+            key={product.id}
+            handleClick={handleClick}
+          />
         ))}
       </div>
     </div>
