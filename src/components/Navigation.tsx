@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useCart } from "../contexte/CartContext";
 
 const Navigation = () => {
-  const { user } = useUser();
+  const { user, logoutUser } = useUser();
   const { cart } = useCart();
   return (
     <div className="navigation-container">
@@ -13,8 +13,14 @@ const Navigation = () => {
         <ul>
           <Link to={"/"}>Home</Link>
           <Link to={"/products/all"}>All products</Link>
-          <Link to={"/account/infos"}>Account</Link>
+          {user && <Link to={"/account/infos"}>Account</Link>}
+
           <Link to={"/cart"}>Cart({cart?.length})</Link>
+          {user ? (
+            <li onClick={logoutUser}>Logout</li>
+          ) : (
+            <Link to={"/account/infos"}>Login</Link>
+          )}
         </ul>
       </nav>
     </div>

@@ -165,7 +165,7 @@ label {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f9f9f9;
+  background-color: white;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -542,10 +542,9 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.123);
 }
 .cart-product-container .cart-table .product-container .img-container img {
-  max-height: 150px;
+  max-height: 110px;
   max-width: 100%;
 }
 .cart-product-container .cart-table th {
