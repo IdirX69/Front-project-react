@@ -63,6 +63,18 @@ label {
   padding: 8px 60px !important;
 }
 
+.add-to-cart-btn {
+  height: 30px;
+  background-color: rgba(84, 66, 246, 0);
+  border: 1px solid rgb(13, 114, 145);
+  color: rgb(13, 114, 145);
+  padding: 0px 15px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 550;
+  cursor: pointer;
+}
+
 .cart-container {
   color: black;
   display: grid;
@@ -161,7 +173,18 @@ label {
   background-color: #0056b3;
 }
 
-.product-info-container {
+.modal-productinfo-bg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+.modal-productinfo-bg .product-info-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -169,34 +192,46 @@ label {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
+  width: 800px;
   margin: 20px auto;
-  position: absolute;
+  position: fixed;
+  top: 30%;
 }
-.product-info-container .img-container {
+.modal-productinfo-bg .product-info-container span {
+  width: 100%;
+  text-align: right;
+  color: black;
+  cursor: pointer;
+}
+.modal-productinfo-bg .product-info-container .product {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 15px;
+}
+.modal-productinfo-bg .product-info-container .product .img-container {
   text-align: center;
   margin-bottom: 20px;
 }
-.product-info-container .img-container p {
+.modal-productinfo-bg .product-info-container .product .img-container p {
   font-size: 1.5rem;
   font-weight: bold;
   color: #2c3e50;
   margin-bottom: 10px;
 }
-.product-info-container .img-container img {
+.modal-productinfo-bg .product-info-container .product .img-container img {
   max-width: 100%;
   height: 200px;
   border-radius: 8px;
 }
-.product-info-container .product-info {
+.modal-productinfo-bg .product-info-container .product .product-info {
   text-align: left;
 }
-.product-info-container .product-info p:first-child {
+.modal-productinfo-bg .product-info-container .product .product-info p:first-child {
   font-size: 1.2rem;
   font-weight: bold;
   color: #34495e;
 }
-.product-info-container .product-info p:last-child {
+.modal-productinfo-bg .product-info-container .product .product-info p:last-child {
   font-size: 1rem;
   color: #2c3e50;
   margin-top: 10px;
@@ -442,17 +477,6 @@ label {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.product-card-container .product-info div button {
-  height: 30px;
-  background-color: rgba(84, 66, 246, 0);
-  border: 1px solid rgb(13, 114, 145);
-  color: rgb(13, 114, 145);
-  padding: 0px 15px;
-  border-radius: 5px;
-  font-size: 0.8rem;
-  font-weight: 550;
-  cursor: pointer;
 }
 .product-card-container .product-info h3 {
   font-size: large;

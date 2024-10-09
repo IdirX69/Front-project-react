@@ -28,6 +28,17 @@ const ProductList = ({
     const data = await response.json();
     setCategories(data);
   };
+  useEffect(() => {
+    if (modal) {
+      document.body.style.overflow = "hidden"; // Prevent body scrolling
+    } else {
+      document.body.style.overflow = "unset"; // Restore body scrolling
+    }
+
+    return () => {
+      document.body.style.overflow = "unset"; // Clean up on unmount
+    };
+  }, [modal]);
 
   useEffect(() => {
     fetchCategories();

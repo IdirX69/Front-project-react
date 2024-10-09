@@ -23,7 +23,7 @@ const OrderInfo = () => {
           <p>Connect or register to see your order information</p>
 
           <Link to="/login">
-            <button className="btn-2">Login or Register</button>
+            <button className="btn-4">Login or Register</button>
           </Link>
         </>
       )}

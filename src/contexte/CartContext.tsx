@@ -10,7 +10,7 @@ interface CartContextType {
   cart: string[] | null;
   setCart: (cart: string[]) => void;
   clearCart: () => void;
-  addProduct: (product: string) => void;
+  addProduct: (product: number) => void;
   removeProduct: (product: string) => void;
 }
 
