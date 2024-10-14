@@ -58,7 +58,10 @@ $font-family: "Helvetica Neue", Arial, sans-serif;
 
       .product-info {
         text-align: left;
-
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        color: #2c3e50;
         p {
           &:first-child {
             font-size: 1.2rem;

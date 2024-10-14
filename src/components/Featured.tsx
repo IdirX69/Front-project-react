@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { ProductType } from "../types/types";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../contexte/CartContext";
 
 const Featured = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
   const [product, setProduct] = useState<ProductType>([]);
+  const { addProduct } = useCart();
   const navigate = useNavigate();
   useEffect(() => {
     fetchProducts();
@@ -22,13 +24,10 @@ const Featured = () => {
           <h2>{product.name}</h2>
           <p>{product.description}</p>
           <div className="btn-div">
-            <button
-              className="btn-1"
-              onClick={() => navigate(`/products/${product.id}`)}
-            >
-              Read more
+            <button className="btn-1" onClick={() => navigate(`/products/all`)}>
+              All Products
             </button>
-            <button className="btn-2">
+            <button className="btn-2" onClick={() => addProduct(product.id)}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"

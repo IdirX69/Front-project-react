@@ -225,6 +225,10 @@ label {
 }
 .modal-productinfo-bg .product-info-container .product .product-info {
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: #2c3e50;
 }
 .modal-productinfo-bg .product-info-container .product .product-info p:first-child {
   font-size: 1.2rem;
