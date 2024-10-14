@@ -98,9 +98,11 @@ const CartProduct = ({
             <th>Total : {total}€</th>
           </tr>
         </tbody>
-        <button className="btn-2" onClick={handleOrder}>
-          Confirm
-        </button>
+        {user && (
+          <button className="btn-4" onClick={handleOrder}>
+            Confirm buy
+          </button>
+        )}
       </table>
     </div>
   );
