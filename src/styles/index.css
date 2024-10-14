@@ -230,6 +230,9 @@ label {
   justify-content: space-around;
   color: #2c3e50;
 }
+.modal-productinfo-bg .product-info-container .product .product-info div {
+  text-align: center;
+}
 .modal-productinfo-bg .product-info-container .product .product-info p:first-child {
   font-size: 1.2rem;
   font-weight: bold;

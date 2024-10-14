@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import Navigation from "../components/Navigation";
 import { ProductType } from "../types/types";
 import { useCart } from "../contexte/CartContext";
 import AddToCartBtn from "../components/AddToCartBtn";
@@ -31,7 +29,9 @@ const ProductInfo = ({ id, setModal }) => {
           <div className="product-info">
             <p>{product.price}€</p>
             <p>{product.description}</p>
-            <AddToCartBtn id={product.id} />
+            <div>
+              <AddToCartBtn id={product.id} />
+            </div>
           </div>
         </div>
       </div>

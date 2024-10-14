@@ -2,6 +2,7 @@ import React from "react";
 import { useUser } from "../contexte/UserContext";
 import { Link } from "react-router-dom";
 import { useCart } from "../contexte/CartContext";
+import LogBtn from "./LogBtn";
 
 const Navigation = () => {
   const { user, logoutUser } = useUser();
@@ -14,13 +15,8 @@ const Navigation = () => {
           <Link to={"/"}>Home</Link>
           <Link to={"/products/all"}>All products</Link>
           {user && <Link to={"/account/infos"}>Account</Link>}
-
+          <LogBtn />
           <Link to={"/cart"}>Cart({cart?.length})</Link>
-          {user ? (
-            <li onClick={logoutUser}>Logout</li>
-          ) : (
-            <Link to={"/account/infos"}>Login</Link>
-          )}
         </ul>
       </nav>
     </div>
