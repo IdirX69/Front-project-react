@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { OrderType, ProductType } from "../types/types";
+import { OrderType } from "../types/types";
 import moment from "moment";
 import OrderDetail from "./OrderDetail";
-import AccountNavigation from "./AccountNavigation";
-import Navigation from "./Navigation";
+import { useUser } from "../contexte/UserContext";
 
 const OrdersList = ({ modal, setModal }) => {
   const apiKey = import.meta.env.VITE_API_KEY;
   const [orders, setOrders] = useState<OrderType[]>([]);
+  const { user } = useUser();
 
   const [orderToDetail, setOrderToDetail] = useState<OrderType>([]);
 
@@ -25,6 +25,9 @@ const OrdersList = ({ modal, setModal }) => {
   useEffect(() => {
     fetchOrders();
   }, []);
+
+  console.log("order" + JSON.stringify(orders[0].userId));
+  console.log("USER" + JSON.stringify(user));
 
   return (
     <>
@@ -45,15 +48,17 @@ const OrdersList = ({ modal, setModal }) => {
             </tr>
           </thead>
           <tbody>
-            {orders.map((order: OrderType) => (
-              <tr key={order.id}>
-                <td>{moment(order.createdAt).format("YYYY-MM-DD HH:mm")}</td>{" "}
-                <td>{order.total}€</td>
-                <td>{order.status}</td>
-                <td>{order.items.length}</td>
-                <button onClick={() => handleClick(order)}>Show more</button>
-              </tr>
-            ))}
+            {orders
+              .filter((order) => order.userId === user.id)
+              .map((order: OrderType) => (
+                <tr key={order.id}>
+                  <td>{moment(order.createdAt).format("YYYY-MM-DD HH:mm")}</td>{" "}
+                  <td>{order.total}€</td>
+                  <td>{order.status}</td>
+                  <td>{order.items.length}</td>
+                  <button onClick={() => handleClick(order)}>Show more</button>
+                </tr>
+              ))}
           </tbody>
         </table>
         {modal && (

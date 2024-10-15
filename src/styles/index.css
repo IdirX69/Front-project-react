@@ -203,6 +203,9 @@ label {
   color: black;
   cursor: pointer;
 }
+.modal-productinfo-bg .product-info-container span svg {
+  height: 20px;
+}
 .modal-productinfo-bg .product-info-container .product {
   display: grid;
   grid-template-columns: 1fr 0.8fr;
@@ -366,6 +369,25 @@ label {
 }
 .navigation-container .navigation ul a {
   color: #aaa;
+  display: flex;
+  flex-direction: column;
+}
+.navigation-container .cart-count {
+  background-color: #1a9348;
+  opacity: 0;
+  width: 150px;
+  text-align: center;
+  transition: transform 0.5s ease, color 0.5s ease;
+  transform: scale(0.8);
+  position: fixed;
+  margin: 15px;
+  top: 0px;
+  right: 0px;
+}
+.navigation-container .animate {
+  opacity: 1;
+  transform: scale(1);
+  color: white;
 }
 
 .featured-container {

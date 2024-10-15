@@ -32,6 +32,9 @@ $font-family: "Helvetica Neue", Arial, sans-serif;
       text-align: right;
       color: black;
       cursor: pointer;
+      svg {
+        height: 20px;
+      }
     }
     .product {
       display: grid;
