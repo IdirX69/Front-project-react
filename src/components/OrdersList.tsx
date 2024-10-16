@@ -4,6 +4,8 @@ import moment from "moment";
 import OrderDetail from "./OrderDetail";
 import { useUser } from "../contexte/UserContext";
 
+import EmptyOrders from "./EmptyOrders";
+
 const OrdersList = ({ modal, setModal }) => {
   const apiKey = import.meta.env.VITE_API_KEY;
   const [orders, setOrders] = useState<OrderType[]>([]);
@@ -16,6 +18,7 @@ const OrdersList = ({ modal, setModal }) => {
     const data = await response.json();
     setOrders(data);
   };
+  const userOrders = orders?.filter((order) => order.userId == user?.id);
 
   const handleClick = (order: OrderType) => {
     setOrderToDetail(order);
@@ -26,8 +29,7 @@ const OrdersList = ({ modal, setModal }) => {
     fetchOrders();
   }, []);
 
-  console.log("order" + JSON.stringify(orders[0].userId));
-  console.log("USER" + JSON.stringify(user));
+  if (userOrders.length == 0) return <EmptyOrders />;
 
   return (
     <>
@@ -48,17 +50,15 @@ const OrdersList = ({ modal, setModal }) => {
             </tr>
           </thead>
           <tbody>
-            {orders
-              .filter((order) => order.userId === user.id)
-              .map((order: OrderType) => (
-                <tr key={order.id}>
-                  <td>{moment(order.createdAt).format("YYYY-MM-DD HH:mm")}</td>{" "}
-                  <td>{order.total}€</td>
-                  <td>{order.status}</td>
-                  <td>{order.items.length}</td>
-                  <button onClick={() => handleClick(order)}>Show more</button>
-                </tr>
-              ))}
+            {userOrders?.map((order: OrderType) => (
+              <tr key={order.id}>
+                <td>{moment(order.createdAt).format("YYYY-MM-DD HH:mm")}</td>{" "}
+                <td>{order.total}€</td>
+                <td>{order.status}</td>
+                <td>{order.items.length}</td>
+                <button onClick={() => handleClick(order)}>Show more</button>
+              </tr>
+            ))}
           </tbody>
         </table>
         {modal && (

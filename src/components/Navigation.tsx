@@ -30,7 +30,7 @@ const Navigation = () => {
           <Link to={"/cart"}>Cart ({cart?.length})</Link>
         </ul>
         <span className={`cart-count ${animate ? "animate" : ""}`}>
-          Article ajouté
+          Product added !
         </span>
       </nav>
     </div>

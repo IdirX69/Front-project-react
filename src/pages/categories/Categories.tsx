@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import AddCategories from "./AddCategories";
 import { CategoryType } from "../../types/types";
 import EditCategory from "./EditCategory";
+import { getUserToken } from "../../services/session.service";
 
 const Categories = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -22,8 +23,13 @@ const Categories = () => {
   }, [edit]);
 
   const handleDelete = async (id: number) => {
+    const userToken = await getUserToken();
     await fetch(`${apiKey}/categories/` + id, {
       method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userToken}`,
+      },
     });
     fetchCategories();
   };
