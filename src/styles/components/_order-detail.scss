@@ -15,10 +15,11 @@ $shadow-color: rgba(0, 0, 0, 0.1);
   padding: 20px;
   border-radius: 8px;
   width: 80%;
+  max-height: 90%;
   max-width: 800px;
   z-index: 1000;
   box-shadow: 0 4px 8px $shadow-color;
-
+  overflow-y: scroll;
   .order-detail-header {
     display: flex;
     justify-content: space-between;
@@ -89,6 +90,24 @@ $shadow-color: rgba(0, 0, 0, 0.1);
       font-weight: bold;
       color: $primary-color;
     }
+  }
+
+  &::-webkit-scrollbar {
+    width: 4px; // Thin scrollbar
+  }
+
+  &::-webkit-scrollbar-track {
+    background: lighten($order-bg-color, 10%); // Subtle background color
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2); // Semi-transparent thumb
+    border-radius: 10px; // Rounded thumb
+    border: 2px solid transparent; // Space between thumb and track for more subtle look
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.3); // Slightly darker on hover
   }
 }
 

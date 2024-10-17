@@ -6,7 +6,7 @@ const LogBtn = () => {
   const { user, logoutUser } = useUser();
 
   return (
-    <>
+    <div style={{ cursor: "pointer" }}>
       {user ? (
         <>
           <li onClick={logoutUser}>Logout</li>
@@ -14,7 +14,7 @@ const LogBtn = () => {
       ) : (
         <Link to={"/account/infos"}>Login</Link>
       )}
-    </>
+    </div>
   );
 };
 
