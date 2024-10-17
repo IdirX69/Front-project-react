@@ -51,7 +51,6 @@ const CartProduct = ({
       });
 
       if (response.ok) {
-        console.log("Order placed successfully");
         clearCart();
       } else {
         console.error("Failed to place order");

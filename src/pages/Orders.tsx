@@ -15,7 +15,6 @@ const Orders = () => {
   useEffect(() => {
     fetchOrders();
   }, []);
-  console.log(orders);
 
   return (
     <div className="admin-container">

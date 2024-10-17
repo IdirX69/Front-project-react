@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Navigation from "../components/Navigation";
 import { useCart } from "../contexte/CartContext";
-import ProductList from "../components/ProductList";
 import CartProduct from "../components/CartProduct";
 import OrderInfo from "../components/OrderInfo";
-import { useUser } from "../contexte/UserContext";
 import EmptyCart from "../components/EmptyCart";
 
 const Cart = () => {
@@ -29,8 +27,6 @@ const Cart = () => {
     );
     setCartProducts(filteredProducts);
   }, [products, cart]);
-
-  console.log(cartProducts);
 
   return (
     <>

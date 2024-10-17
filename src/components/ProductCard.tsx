@@ -6,7 +6,6 @@ import AddToCartBtn from "./AddToCartBtn";
 
 const ProductCard = ({ product, handleClick }: { product: ProductType }) => {
   const apiKey = import.meta.env.VITE_API_KEY;
-  console.log(product?.category?.name);
 
   return (
     <div className="product-card-container">
