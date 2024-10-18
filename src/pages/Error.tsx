@@ -6,6 +6,13 @@ const Error = () => {
     <div>
       <h2>Something was wrong</h2>
       <Link to={"/"}>Return to home page</Link>
+      <button
+        onClick={() => {
+          window.location.reload();
+        }}
+      >
+        Reload
+      </button>
     </div>
   );
 };

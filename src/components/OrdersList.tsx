@@ -6,12 +6,18 @@ import { useUser } from "../contexte/UserContext";
 
 import EmptyOrders from "./EmptyOrders";
 
-const OrdersList = ({ modal, setModal }) => {
+const OrdersList = ({
+  modal,
+  setModal,
+}: {
+  modal: boolean;
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const apiKey = import.meta.env.VITE_API_KEY;
   const [orders, setOrders] = useState<OrderType[]>([]);
   const { user } = useUser();
 
-  const [orderToDetail, setOrderToDetail] = useState<OrderType>([]);
+  const [orderToDetail, setOrderToDetail] = useState<OrderType | null>(null);
 
   const fetchOrders = async () => {
     const response = await fetch(`${apiKey}/orders`);

@@ -1,10 +1,14 @@
 import React from "react";
 import { ProductType } from "../types/types";
-import { useCart } from "../contexte/CartContext";
-import { useNavigate } from "react-router-dom";
 import AddToCartBtn from "./AddToCartBtn";
 
-const ProductCard = ({ product, handleClick }: { product: ProductType }) => {
+const ProductCard = ({
+  product,
+  handleClick,
+}: {
+  product: ProductType;
+  handleClick: (id: number) => void;
+}) => {
   const apiKey = import.meta.env.VITE_API_KEY;
 
   return (

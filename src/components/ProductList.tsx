@@ -18,8 +18,8 @@ const ProductList = ({
   );
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
-  const handleClick = (id) => {
-    setId(id);
+  const handleClick = (id: number) => {
+    setId(id.toString());
     setModal(true);
   };
 

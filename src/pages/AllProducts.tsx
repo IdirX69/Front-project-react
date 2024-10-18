@@ -7,14 +7,14 @@ const AllProducts = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    const fetchProducts = async () => {
+      const response = await fetch(`${apiKey}/products`);
+      const data = await response.json();
+      setProducts(data);
+    };
     fetchProducts();
-  }, []);
+  }, [apiKey]);
 
-  const fetchProducts = async () => {
-    const response = await fetch(`${apiKey}/products`);
-    const data = await response.json();
-    setProducts(data);
-  };
   return (
     <div>
       <Navigation />

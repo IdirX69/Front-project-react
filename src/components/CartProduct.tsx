@@ -3,16 +3,11 @@ import { useCart } from "../contexte/CartContext";
 import { ProductType } from "../types/types";
 import { useUser } from "../contexte/UserContext";
 
-const CartProduct = ({
-  products,
-  setCartProducts,
-}: {
-  products: ProductType[];
-}) => {
+const CartProduct = ({ products }: { products: ProductType[] }) => {
   const { cart, clearCart, addProduct, removeProduct } = useCart();
   const { user } = useUser();
 
-  const moreProduct = (productId: string) => {
+  const moreProduct = (productId: number) => {
     addProduct(productId);
   };
 
@@ -25,7 +20,7 @@ const CartProduct = ({
   };
 
   const total = products.reduce((acc, element) => {
-    return acc + getProductQuantity(element.id) * element.price;
+    return acc + (getProductQuantity(element.id) || 0) * element.price;
   }, 0);
 
   const handleOrder = async () => {
@@ -88,7 +83,7 @@ const CartProduct = ({
                 {getProductQuantity(prod.id)}
                 <button onClick={() => moreProduct(prod.id)}>+</button>
               </td>
-              <td>{prod.price * getProductQuantity(prod.id)}€</td>
+              <td>{prod.price * (getProductQuantity(prod.id) ?? 0)}€</td>
             </tr>
           ))}
           <tr>

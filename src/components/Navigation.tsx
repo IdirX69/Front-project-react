@@ -11,11 +11,11 @@ const Navigation = () => {
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
-    if (cart?.length > cartCount) {
+    if (cart && cart.length > cartCount) {
       setAnimate(true);
-      setTimeout(() => setAnimate(false), 2000); // Animation dure 500ms
+      setTimeout(() => setAnimate(false), 2000); // L'animation dure 2000ms
     }
-    setCartCount(cart?.length);
+    setCartCount(cart?.length || 0);
   }, [cart]);
 
   return (

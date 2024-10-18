@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { ProductType } from "../types/types";
-import { useCart } from "../contexte/CartContext";
 import AddToCartBtn from "../components/AddToCartBtn";
 
-const ProductInfo = ({ id, setModal }) => {
+const ProductInfo = ({
+  id,
+  setModal,
+}: {
+  id: string;
+  setModal: (isOpen: boolean) => void;
+}) => {
   const apiKey = import.meta.env.VITE_API_KEY;
-  const [product, setProduct] = useState<ProductType>([]);
-  const { addProduct } = useCart();
+  const [product, setProduct] = useState<ProductType | null>(null);
+
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -37,15 +42,13 @@ const ProductInfo = ({ id, setModal }) => {
         </span>
         <div className="product">
           <div className="img-container">
-            <p>{product.name}</p>
-            <img src={`${apiKey}/uploads/${product.image}`} alt="" />
+            <p>{product?.name}</p>
+            <img src={`${apiKey}/uploads/${product?.image}`} alt="" />
           </div>
           <div className="product-info">
-            <p>{product.price}€</p>
-            <p>{product.description}</p>
-            <div>
-              <AddToCartBtn id={product.id} />
-            </div>
+            <p>{product?.price}€</p>
+            <p>{product?.description}</p>
+            <div>{product && <AddToCartBtn id={product.id} />}</div>
           </div>
         </div>
       </div>
