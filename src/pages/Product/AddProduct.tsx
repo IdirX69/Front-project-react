@@ -51,8 +51,6 @@ const AddArticle = () => {
       });
 
       if (!imageResponse.ok) {
-        console.log(imageResponse);
-
         throw new Error("Image upload failed");
       }
 
@@ -66,7 +64,6 @@ const AddArticle = () => {
         categoryId: formData.categoryId,
         image: imageResult.filename,
       };
-      console.log(articleData);
 
       const articleResponse = await fetch(`${apiKey}/products`, {
         method: "POST",
@@ -78,15 +75,12 @@ const AddArticle = () => {
 
       if (!articleResponse.ok) {
         const errorData = await articleResponse.json();
-        console.log("Server response:", errorData);
         throw new Error(errorData.message || "Article creation failed");
       }
 
       const result = await articleResponse.json();
 
-      if (!result.error) {
-        console.log(`Article ajouté: ${JSON.stringify(result)}`);
-      } else {
+      if (result.error) {
         throw new Error(result.message);
       }
     } catch (error) {

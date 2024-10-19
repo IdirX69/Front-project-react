@@ -9,7 +9,7 @@ import { getAuthenticatedUser } from "../services/auth.ervice";
 import { logout } from "../services/session.service";
 
 interface User {
-  id: string;
+  id: number;
   email: string;
   firstname: string;
   lastname: string;

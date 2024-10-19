@@ -27,7 +27,6 @@ const Register: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form data submitted: ", formData);
     try {
       const response = await fetch(`${apiKey}/auth/register`, {
         method: "POST",
@@ -46,9 +45,6 @@ const Register: React.FC = () => {
         const authenticatedUser = await authenticateUser({
           userToken: access_token,
         });
-
-        console.log("User registered successfully!");
-        console.log(authenticatedUser);
 
         if (authenticatedUser) {
           setUser(authenticatedUser);

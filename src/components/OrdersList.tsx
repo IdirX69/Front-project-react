@@ -1,21 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { OrderType, ProductType } from "../types/types";
+import { OrderType } from "../types/types";
 import moment from "moment";
 import OrderDetail from "./OrderDetail";
-import AccountNavigation from "./AccountNavigation";
-import Navigation from "./Navigation";
+import { useUser } from "../contexte/UserContext";
 
-const OrdersList = ({ modal, setModal }) => {
+import EmptyOrders from "./EmptyOrders";
+
+const OrdersList = ({
+  modal,
+  setModal,
+}: {
+  modal: boolean;
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const apiKey = import.meta.env.VITE_API_KEY;
   const [orders, setOrders] = useState<OrderType[]>([]);
+  const { user } = useUser();
 
-  const [orderToDetail, setOrderToDetail] = useState<OrderType>([]);
+  const [orderToDetail, setOrderToDetail] = useState<OrderType | null>(null);
 
   const fetchOrders = async () => {
     const response = await fetch(`${apiKey}/orders`);
     const data = await response.json();
     setOrders(data);
   };
+  const userOrders = orders?.filter((order) => order.userId == user?.id);
 
   const handleClick = (order: OrderType) => {
     setOrderToDetail(order);
@@ -25,6 +34,8 @@ const OrdersList = ({ modal, setModal }) => {
   useEffect(() => {
     fetchOrders();
   }, []);
+
+  if (userOrders.length == 0) return <EmptyOrders />;
 
   return (
     <>
@@ -45,7 +56,7 @@ const OrdersList = ({ modal, setModal }) => {
             </tr>
           </thead>
           <tbody>
-            {orders.map((order: OrderType) => (
+            {userOrders?.map((order: OrderType) => (
               <tr key={order.id}>
                 <td>{moment(order.createdAt).format("YYYY-MM-DD HH:mm")}</td>{" "}
                 <td>{order.total}€</td>

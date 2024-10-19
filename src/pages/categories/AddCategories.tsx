@@ -40,7 +40,6 @@ const AddCategories: React.FC<AddCategoriesProps> = ({ fetchCategories }) => {
       });
 
       if (!categoryResponse.ok) {
-        console.log(categoryResponse);
         throw new Error("category creation failed");
       }
 

@@ -19,7 +19,6 @@ const UserInfos = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(infos);
 
     try {
       const response = await fetch(`${apiKey}/users/${user?.id}`, {
@@ -51,7 +50,7 @@ const UserInfos = () => {
         zipcode: user.zipcode,
       });
   }, [user]);
-  console.log(user);
+
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement

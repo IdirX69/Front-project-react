@@ -25,7 +25,6 @@ const Products = () => {
     console.log(response);
   };
 
-  console.log(products);
   return (
     <div className="admin-container">
       <AdminNavigation />

@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import Navigation from "../components/Navigation";
 import { ProductType } from "../types/types";
+import AddToCartBtn from "../components/AddToCartBtn";
 
-const ProductInfo = () => {
-  const { id } = useParams<{ id: string }>();
-
+const ProductInfo = ({
+  id,
+  setModal,
+}: {
+  id: string;
+  setModal: (isOpen: boolean) => void;
+}) => {
   const apiKey = import.meta.env.VITE_API_KEY;
-  const [product, setProduct] = useState<ProductType>([]);
+  const [product, setProduct] = useState<ProductType | null>(null);
 
   useEffect(() => {
     fetchProducts();
@@ -20,15 +23,36 @@ const ProductInfo = () => {
   };
 
   return (
-    <>
-      <Navigation />
-      <div>
-        <p>{product.name}</p>
-        <p>{product.description}</p>
-        <p>{product.price}</p>
-        <img src={`${apiKey}/uploads/${product.image}`} alt="" />
+    <div className="modal-productinfo-bg">
+      <div className="product-info-container">
+        <span onClick={() => setModal(false)}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
+        </span>
+        <div className="product">
+          <div className="img-container">
+            <p>{product?.name}</p>
+            <img src={`${apiKey}/uploads/${product?.image}`} alt="" />
+          </div>
+          <div className="product-info">
+            <p>{product?.price}€</p>
+            <p>{product?.description}</p>
+            <div>{product && <AddToCartBtn id={product.id} />}</div>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

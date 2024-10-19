@@ -1,0 +1,113 @@
+// styles/ProductInfo.scss
+
+$product-background: white;
+$container-padding: 20px;
+$primary-color: #2c3e50;
+$secondary-color: #34495e;
+$font-family: "Helvetica Neue", Arial, sans-serif;
+.modal-productinfo-bg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  .product-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $product-background;
+    padding: $container-padding;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 800px;
+    margin: 20px auto;
+    position: fixed;
+    top: 30%;
+    span {
+      width: 100%;
+      text-align: right;
+      color: black;
+      cursor: pointer;
+      svg {
+        height: 20px;
+      }
+    }
+    .product {
+      display: grid;
+      grid-template-columns: 1fr 0.8fr;
+      gap: 15px;
+
+      .img-container {
+        text-align: center;
+        margin-bottom: 20px;
+
+        p {
+          font-size: 1.5rem;
+          font-weight: bold;
+          color: $primary-color;
+          margin-bottom: 10px;
+        }
+
+        img {
+          max-width: 100%;
+          height: 200px;
+          border-radius: 8px;
+        }
+      }
+
+      .product-info {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        color: #2c3e50;
+
+        div {
+          text-align: center;
+        }
+        p {
+          &:first-child {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: $secondary-color;
+          }
+
+          &:last-child {
+            font-size: 1rem;
+            color: $primary-color;
+            margin-top: 10px;
+            line-height: 1.5;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .product-info-container {
+    padding: 15px;
+
+    .img-container {
+      p {
+        font-size: 1.2rem;
+      }
+    }
+
+    .product-info {
+      p {
+        &:first-child {
+          font-size: 1rem;
+        }
+
+        &:last-child {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}

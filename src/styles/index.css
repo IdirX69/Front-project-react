@@ -63,6 +63,25 @@ label {
   padding: 8px 60px !important;
 }
 
+.add-to-cart-btn {
+  height: 30px;
+  background-color: rgba(84, 66, 246, 0);
+  border: 1px solid rgb(13, 114, 145);
+  color: rgb(13, 114, 145);
+  padding: 0px 15px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 550;
+  cursor: pointer;
+}
+
+.link-admin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
 .cart-container {
   color: black;
   display: grid;
@@ -161,6 +180,95 @@ label {
   background-color: #0056b3;
 }
 
+.modal-productinfo-bg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+.modal-productinfo-bg .product-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 800px;
+  margin: 20px auto;
+  position: fixed;
+  top: 30%;
+}
+.modal-productinfo-bg .product-info-container span {
+  width: 100%;
+  text-align: right;
+  color: black;
+  cursor: pointer;
+}
+.modal-productinfo-bg .product-info-container span svg {
+  height: 20px;
+}
+.modal-productinfo-bg .product-info-container .product {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 15px;
+}
+.modal-productinfo-bg .product-info-container .product .img-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.modal-productinfo-bg .product-info-container .product .img-container p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+.modal-productinfo-bg .product-info-container .product .img-container img {
+  max-width: 100%;
+  height: 200px;
+  border-radius: 8px;
+}
+.modal-productinfo-bg .product-info-container .product .product-info {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: #2c3e50;
+}
+.modal-productinfo-bg .product-info-container .product .product-info div {
+  text-align: center;
+}
+.modal-productinfo-bg .product-info-container .product .product-info p:first-child {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #34495e;
+}
+.modal-productinfo-bg .product-info-container .product .product-info p:last-child {
+  font-size: 1rem;
+  color: #2c3e50;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .product-info-container {
+    padding: 15px;
+  }
+  .product-info-container .img-container p {
+    font-size: 1.2rem;
+  }
+  .product-info-container .product-info p:first-child {
+    font-size: 1rem;
+  }
+  .product-info-container .product-info p:last-child {
+    font-size: 0.9rem;
+  }
+}
 .admin-container {
   display: flex;
   min-height: 100%;
@@ -268,6 +376,25 @@ label {
 }
 .navigation-container .navigation ul a {
   color: #aaa;
+  display: flex;
+  flex-direction: column;
+}
+.navigation-container .cart-count {
+  background-color: #1a9348;
+  opacity: 0;
+  width: 150px;
+  text-align: center;
+  transition: transform 0.5s ease, color 0.5s ease;
+  transform: scale(0.8);
+  position: fixed;
+  margin: 15px;
+  top: 0px;
+  right: 0px;
+}
+.navigation-container .animate {
+  opacity: 1;
+  transform: scale(1);
+  color: white;
 }
 
 .featured-container {
@@ -374,28 +501,18 @@ label {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  width: 100%;
 }
 .product-card-container .product-info {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  width: 100%;
   color: black;
 }
 .product-card-container .product-info div {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.product-card-container .product-info div button {
-  height: 30px;
-  background-color: rgba(84, 66, 246, 0);
-  border: 1px solid rgb(13, 114, 145);
-  color: rgb(13, 114, 145);
-  padding: 0px 15px;
-  border-radius: 5px;
-  font-size: 0.8rem;
-  font-weight: 550;
-  cursor: pointer;
 }
 .product-card-container .product-info h3 {
   font-size: large;
@@ -410,11 +527,14 @@ label {
   justify-content: center;
   align-items: center;
   padding: 15px;
+  overflow: hidden;
   cursor: pointer;
 }
 .product-card-container .img-container img {
-  max-height: 120px;
-  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .product-card-container span {
   font-size: 25px;
@@ -448,8 +568,8 @@ label {
   margin: 2rem;
   margin-top: 10px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 25px;
 }
 
 .cart-product-container {
@@ -482,10 +602,9 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.123);
 }
 .cart-product-container .cart-table .product-container .img-container img {
-  max-height: 150px;
+  max-height: 110px;
   max-width: 100%;
 }
 .cart-product-container .cart-table th {
@@ -622,9 +741,11 @@ label {
   padding: 20px;
   border-radius: 8px;
   width: 80%;
+  max-height: 90%;
   max-width: 800px;
   z-index: 1000;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: scroll;
 }
 .order-detail-container .order-detail-header {
   display: flex;
@@ -687,6 +808,20 @@ label {
   font-size: 22px;
   font-weight: bold;
   color: #007bff;
+}
+.order-detail-container::-webkit-scrollbar {
+  width: 4px;
+}
+.order-detail-container::-webkit-scrollbar-track {
+  background: white;
+}
+.order-detail-container::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  border: 2px solid transparent;
+}
+.order-detail-container::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .modal-overlay {
@@ -758,4 +893,39 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.empty-orders-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  height: 100%;
+  color: #555;
+}
+.empty-orders-container span {
+  font-size: 80px;
+  color: #ccc;
+  margin-bottom: 20px;
+  background: none;
+}
+.empty-orders-container p {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+.empty-orders-container button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+.empty-orders-container button:hover {
+  background-color: #0056b3;
 }/*# sourceMappingURL=index.css.map */

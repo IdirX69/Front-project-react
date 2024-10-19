@@ -33,5 +33,6 @@ export type OrderType = {
   total: number;
   status: string;
   items: OrderItemType[];
+  userId: number;
   user: UserType;
 };

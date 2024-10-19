@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { authenticateUser } from "../services/session.service";
 import { useUser } from "../contexte/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
 
-  const { setUser, logoutUser } = useUser();
+  const { setUser } = useUser();
+
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -25,8 +28,13 @@ const LoginForm = () => {
     const authenticatedUser = await authenticateUser({
       userToken: access_token,
     });
-    setUser(authenticatedUser);
-    return authenticatedUser;
+    if (access_token) {
+      setUser(authenticatedUser);
+      navigate("/");
+      return authenticatedUser;
+    } else {
+      console.log(response);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,10 +66,7 @@ const LoginForm = () => {
           placeholder="Mot de passe"
         />
 
-        <button type="submit">Se Connecter</button>
-        <button type="button" onClick={() => logoutUser()}>
-          Se deconnecter
-        </button>
+        <button type="submit">Connect</button>
       </form>
     </div>
   );

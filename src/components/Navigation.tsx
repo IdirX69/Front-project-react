@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useUser } from "../contexte/UserContext";
 import { Link } from "react-router-dom";
 import { useCart } from "../contexte/CartContext";
+import LogBtn from "./LogBtn";
 
 const Navigation = () => {
   const { user } = useUser();
   const { cart } = useCart();
+  const [cartCount, setCartCount] = useState(cart?.length || 0);
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    if (cart && cart.length > cartCount) {
+      setAnimate(true);
+      setTimeout(() => setAnimate(false), 2000); // L'animation dure 2000ms
+    }
+    setCartCount(cart?.length || 0);
+  }, [cart]);
+
   return (
     <div className="navigation-container">
       <nav className="navigation">
@@ -13,9 +25,13 @@ const Navigation = () => {
         <ul>
           <Link to={"/"}>Home</Link>
           <Link to={"/products/all"}>All products</Link>
-          <Link to={"/account/infos"}>Account</Link>
-          <Link to={"/cart"}>Cart({cart?.length})</Link>
+          {user && <Link to={"/account/infos"}>Account</Link>}
+          <LogBtn />
+          <Link to={"/cart"}>Cart ({cart?.length})</Link>
         </ul>
+        <span className={`cart-count ${animate ? "animate" : ""}`}>
+          Product added !
+        </span>
       </nav>
     </div>
   );
